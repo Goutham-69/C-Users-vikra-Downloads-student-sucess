@@ -20,10 +20,17 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static assets from /static
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-// Serve primary single-page application template
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'UP',
+    server: 'Node.js Express Frontend Gateway',
+    fastapi_backend: FASTAPI_BACKEND_URL,
+    timestamp: new Date().toISOString()
+  });
 });
+       
+
 
 // Proxy API requests to Python FastAPI Backend
 app.all('/api/*', (req, res) => {
