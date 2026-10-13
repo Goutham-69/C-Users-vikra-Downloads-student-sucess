@@ -21,8 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // Serve primary single-page application template
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'templates', 'index.html'));
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname,"index.html"));
 });
 
 // Proxy API requests to Python FastAPI Backend
