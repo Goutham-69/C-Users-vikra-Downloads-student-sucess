@@ -21,12 +21,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-    res.status(200).json({
-        status: "UP",
-        message: "EduPulse AI server is running"
-    });
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
 });
+
        
 
 
