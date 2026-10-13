@@ -22,12 +22,10 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({
-    status: 'UP',
-    server: 'Node.js Express Frontend Gateway',
-    fastapi_backend: FASTAPI_BACKEND_URL,
-    timestamp: new Date().toISOString()
-  });
+    res.status(200).json({
+        status: "UP",
+        message: "EduPulse AI server is running"
+    });
 });
        
 
