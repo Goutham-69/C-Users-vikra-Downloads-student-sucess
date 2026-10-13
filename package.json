@@ -1,0 +1,26 @@
+{
+  "name": "edupulse-ai-student-success",
+  "version": "2.0.0",
+  "description": "Enterprise AI-Powered Student Success Platform (KPMG Challenge 04) - Frontend Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "http-proxy-middleware": "^3.0.0"
+  },
+  "keywords": [
+    "student-success",
+    "kpmg",
+    "analytics",
+    "ai",
+    "decision-intelligence",
+    "fastapi"
+  ],
+  "author": "EduPulse Enterprise Architecture Team",
+  "license": "ISC"
+}
