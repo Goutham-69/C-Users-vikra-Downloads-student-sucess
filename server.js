@@ -1,7 +1,5 @@
 /**
- * EduPulse AI - Enterprise Frontend Server (Node.js Express)
- * Architected to 15-Year Senior Technical Standards
- * Serves static assets & reverse-proxies API requests to Python FastAPI with API Key injection
+ * EduPulse AI - Node.js Express Frontend Server
  */
 
 const express = require('express');
@@ -10,82 +8,97 @@ const http = require('http');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const FASTAPI_BACKEND_URL = process.env.FASTAPI_BACKEND_URL || 'http://127.0.0.1:8000';
-const API_KEY = process.env.EDUPULSE_API_KEY || 'kpmg-edupulse-enterprise-api-key-2026';
 
-// Middleware
+const FASTAPI_BACKEND_URL =
+    process.env.FASTAPI_BACKEND_URL || 'http://127.0.0.1:8000';
+
+const API_KEY = process.env.EDUPULSE_API_KEY || '';
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static assets from /static
+// Serve static files
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-// Health check endpoint
+// Main dashboard page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
-});
-
-       
-
-
-// Proxy API requests to Python FastAPI Backend
-app.all('/api/*', (req, res) => {
-    const targetUrl = new URL(req.originalUrl, FASTAPI_BACKEND_URL);
-    
-    const options = {
-        hostname: targetUrl.hostname,
-        port: targetUrl.port || 8000,
-        path: targetUrl.pathname + targetUrl.search,
-        method: req.method,
-        headers: {
-            ...req.headers,
-            'host': `${targetUrl.hostname}:${targetUrl.port || 8000}`,
-            'X-API-Key': API_KEY // Injects enterprise FastAPI Key
+    res.sendFile(path.join(__dirname, 'index.html'), (err) => {
+        if (err) {
+            console.error('Could not load index.html:', err.message);
+            if (!res.headersSent) {
+                res.status(500).send(
+                    'Dashboard file not found. Check that index.html exists.'
+                );
+            }
         }
-    };
-
-    const proxyReq = http.request(options, (proxyRes) => {
-        res.writeHead(proxyRes.statusCode, proxyRes.headers);
-        proxyRes.pipe(res, { end: true });
     });
-
-    proxyReq.on('error', (err) => {
-        console.error(`[Node.js Proxy Error]: ${err.message}`);
-        res.status(502).json({
-            error: 'FastAPI Backend Unavailable',
-            detail: 'Please ensure Python FastAPI is running on port 8000 (run.bat or python app.py).',
-            timestamp: new Date().toISOString()
-        });
-    });
-
-    if (req.body && Object.keys(req.body).length > 0) {
-        const bodyData = JSON.stringify(req.body);
-        proxyReq.setHeader('Content-Type', 'application/json');
-        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
-        proxyReq.write(bodyData);
-    }
-
-    req.pipe(proxyReq, { end: true });
 });
 
-// Health check endpoint
+// Health check for the Node.js server
 app.get('/health', (req, res) => {
-    res.json({
+    res.status(200).json({
         status: 'UP',
-        server: 'Node.js Express Frontend Gateway',
-        fastapi_backend: FASTAPI_BACKEND_URL,
+        server: 'EduPulse AI Node.js Gateway',
         timestamp: new Date().toISOString()
     });
 });
 
-// Start Server
+// Proxy API requests to FastAPI
+app.all('/api/*', (req, res) => {
+    let targetUrl;
+
+    try {
+        const apiPath = req.originalUrl.replace(/^\/api/, '');
+        targetUrl = new URL(apiPath || '/', FASTAPI_BACKEND_URL);
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Invalid FASTAPI_BACKEND_URL'
+        });
+    }
+
+    const headers = { ...req.headers };
+    delete headers.host;
+    delete headers.connection;
+
+    headers.host = targetUrl.host;
+
+    if (API_KEY) {
+        headers['X-API-Key'] = API_KEY;
+    }
+
+    const options = {
+        hostname: targetUrl.hostname,
+        port: targetUrl.port || 80,
+        path: targetUrl.pathname + targetUrl.search,
+        method: req.method,
+        headers
+    };
+
+    const proxyReq = http.request(options, (proxyRes) => {
+        res.writeHead(proxyRes.statusCode, proxyRes.headers);
+        proxyRes.pipe(res);
+    });
+
+    proxyReq.on('error', (err) => {
+        console.error('FastAPI proxy error:', err.message);
+
+        if (!res.headersSent) {
+            res.status(502).json({
+                error: 'FastAPI backend unavailable',
+                detail: 'Check FASTAPI_BACKEND_URL and ensure the backend is running.'
+            });
+        }
+    });
+
+    req.pipe(proxyReq);
+});
+
+// Start server
 if (require.main === module) {
-    app.listen(PORT, () => {
-        console.log(`================================================================`);
-        console.log(`EduPulse AI - Node.js Express Frontend Gateway Active`);
-        console.log(`Listening on http://localhost:${PORT}`);
-        console.log(`Forwarding /api requests to FastAPI at ${FASTAPI_BACKEND_URL}`);
-        console.log(`================================================================`);
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log('EduPulse AI server is running');
+        console.log(`Port: ${PORT}`);
+        console.log(`FastAPI backend: ${FASTAPI_BACKEND_URL}`);
     });
 }
 
