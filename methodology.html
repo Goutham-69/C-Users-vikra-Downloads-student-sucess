@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology Note | Student Success Score (SSS)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-6 md:p-12">
+    <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-slate-200 space-y-8">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-5">
+            <div>
+                <a href="/" class="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 mb-2">
+                    <i class="fas fa-arrow-left"></i> Return to Live Dashboard
+                </a>
+                <h1 class="text-3xl font-extrabold text-slate-900">Student Success Score (SSS) Methodology Note</h1>
+                <p class="text-sm text-slate-500 mt-1">Multi-Attribute Mathematical Formulation, Weighting Rationale & Risk Framework</p>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-blue-900 text-white flex items-center justify-center font-bold text-lg">
+                KPMG
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="space-y-3">
+            <h2 class="text-lg font-bold text-slate-900">1. Executive Overview & Institutional Need</h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+                Traditional higher education reporting relies almost exclusively on retrospective, single-dimensional indicators such as Semester End Examination (SEE) marks or cumulative grade point average (CGPA). These lagging indicators fail to alert faculty mentors before academic probation or placement disqualification occurs.
+            </p>
+            <p class="text-sm text-slate-600 leading-relaxed">
+                The <strong>Student Success Score (SSS)</strong> is an analytics and AI-powered composite index on a continuous scale of $[0, 100]$. It synthesizes 7 disjoint campus operational systems: Academic Examinations, Biometric Attendance, Learning Management Systems (LMS), Co-Curricular Engagement, Placement Assessment Portals, Skills Assessments, and Faculty Mentorship Feedback.
+            </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="space-y-3">
+            <h2 class="text-lg font-bold text-slate-900">2. Mathematical Formulation</h2>
+            <div class="p-4 bg-slate-900 text-blue-300 font-mono text-sm rounded-xl overflow-x-auto">
+                SSS = 0.35 × AI + 0.25 × ELI + 0.30 × PRI + 0.10 × FWI
+            </div>
+            <div class="space-y-4 pt-2">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-sm text-slate-900">A. Academic Index (AI) — Weight: 35%</h3>
+                    <p class="text-xs text-slate-600 mt-1">
+                        Reflects foundational subject mastery, weighted by internal evaluations and penalized non-linearly for accumulated backlogs:
+                    </p>
+                    <div class="bg-white p-2 rounded border border-slate-200 font-mono text-xs text-slate-800 mt-2">
+                        AI = clip( 0.55 × (CGPA × 10) + 0.45 × (Internal Exam Score) - [12 × ActiveBacklogs + 2.5 × HistoryBacklogs], 0, 100 )
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-sm text-slate-900">B. Engagement & LMS Index (ELI) — Weight: 25%</h3>
+                    <p class="text-xs text-slate-600 mt-1">
+                        Captures behavioral and daily operational discipline across biometric attendance logs and LMS activity:
+                    </p>
+                    <div class="bg-white p-2 rounded border border-slate-200 font-mono text-xs text-slate-800 mt-2">
+                        ELI = clip( 0.40 × Attendance% + 0.30 × AssignmentCompletion% + 0.15 × LMS_Activity + 0.15 × CoCurricular, 0, 100 )
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-sm text-slate-900">C. Placement Readiness Index (PRI) — Weight: 30%</h3>
+                    <p class="text-xs text-slate-600 mt-1">
+                        Evaluates market employability, competitive problem solving, aptitude, and verbal interview performance:
+                    </p>
+                    <div class="bg-white p-2 rounded border border-slate-200 font-mono text-xs text-slate-800 mt-2">
+                        PRI = clip( 0.35 × CodingScore + 0.30 × AptitudeScore + 0.20 × MockInterview + 0.15 × SkillsRatingScaled, 0, 100 )
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-sm text-slate-900">D. Feedback & Well-being Index (FWI) — Weight: 10%</h3>
+                    <p class="text-xs text-slate-600 mt-1">
+                        Encapsulates human faculty mentor observations and student institutional satisfaction:
+                    </p>
+                    <div class="bg-white p-2 rounded border border-slate-200 font-mono text-xs text-slate-800 mt-2">
+                        FWI = clip( 0.60 × (FacultyMentorRating × 20) + 0.40 × (StudentSatisfaction × 20), 0, 100 )
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="space-y-3">
+            <h2 class="text-lg font-bold text-slate-900">3. Dual-Axis Risk Categorization Matrix</h2>
+            <p class="text-xs text-slate-600">Students are independently mapped along both an <strong>Academic Risk</strong> axis and a <strong>Placement Readiness Risk</strong> axis:</p>
+            <div class="grid grid-cols-2 gap-4 text-xs">
+                <div class="p-4 bg-red-50 border border-red-200 rounded-xl space-y-1">
+                    <div class="font-bold text-red-900">Academic Risk Axis</div>
+                    <div>• <strong>High:</strong> Active Backlogs ≥ 2, or CGPA &lt; 6.0, or Attendance &lt; 65%, or AI &lt; 50.</div>
+                    <div>• <strong>Medium:</strong> Active Backlogs == 1, or CGPA &lt; 7.0, or Attendance &lt; 75%.</div>
+                    <div>• <strong>Low:</strong> No active backlogs, good standing.</div>
+                </div>
+                <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-1">
+                    <div class="font-bold text-amber-900">Placement Outcome Risk Axis</div>
+                    <div>• <strong>High:</strong> Coding Score &lt; 42/100, Aptitude &lt; 48/100, or PRI &lt; 50.</div>
+                    <div>• <strong>Medium:</strong> Coding &lt; 58/100, Aptitude &lt; 60/100, or PRI &lt; 65.</div>
+                    <div>• <strong>Low:</strong> Strong coding profile, aptitude cleared.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="space-y-3">
+            <h2 class="text-lg font-bold text-slate-900">4. Bonus Features: Clustering Personas & Explainable AI (XAI)</h2>
+            <div class="space-y-3 text-xs text-slate-600">
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <h4 class="font-bold text-slate-800 text-sm">Unsupervised K-Means Segmentation</h4>
+                    <p class="mt-1">
+                        Feature vectors $[AI, ELI, PRI, FWI]$ are clustered using K-Means ($k=5$) and translated into institutional student personas. This surfaces non-intuitive segments such as <em>"High Academic, Low Placement"</em> (high CGPA but failing coding tests) and <em>"Disengaged High-Potential"</em> (high inherent aptitude but missing lectures).
+                    </p>
+                </div>
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <h4 class="font-bold text-slate-800 text-sm">Transparent Explainability Engine (XAI)</h4>
+                    <p class="mt-1">
+                        Every student record is accompanied by a transparent waterfall of positive driver points and negative risk drag points. Faculty advisors immediately see whether a low score is driven by attendance failure, lack of coding practice, or active backlogs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="border-t border-slate-200 pt-6 text-center">
+            <a href="/" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-md inline-flex items-center gap-2">
+                <i class="fas fa-desktop"></i> Open Live Dashboard & Interventions
+            </a>
+        </div>
+    </div>
+</body>
+</html>

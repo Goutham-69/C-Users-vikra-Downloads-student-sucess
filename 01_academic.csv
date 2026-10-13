@@ -1,0 +1,199 @@
+student_id,full_name,department,semester,cgpa,internal_exam_score,active_backlogs,history_backlogs
+25D01A0501,ANKITHA AJEMERA,Computer Science & Engineering,8,7.15,75.8,2,3
+25D01A0502,AJAYKUMAR BANKA,Artificial Intelligence & Data Science,8,6.84,68.8,1,2
+25D01A0503,SHIVA KUMAR BHUPATHI,Information Technology,4,8.24,82.3,0,0
+25D01A0504,MANOJ CHEGANTI,Electronics & Communication,8,9.27,92.0,0,1
+25D01A0505,STEPHEN DANDU,Mechanical Engineering,8,7.4,78.7,0,0
+25D01A0506,SATHISH DASOJU,Management & Business Analytics,6,7.19,74.3,0,0
+25D01A0507,AKSHITHA DESHMI,Computer Science & Engineering,4,8.61,82.5,0,0
+25D01A0508,POOJITHA DUBBARAJOLLA,Artificial Intelligence & Data Science,8,6.83,65.1,1,1
+25D01A0509,RAMYA DURGAM,Information Technology,4,6.82,66.7,2,3
+25D01A0510,VINAY ELLA,Electronics & Communication,8,8.1,83.3,0,2
+25D01A0511,Rishi Elukusu,Mechanical Engineering,6,6.35,59.4,2,2
+25D01A0512,Ranjith Kumar Eshala,Management & Business Analytics,4,8.63,84.6,0,0
+25D01A0513,Vijay Kumar Gaddam,Computer Science & Engineering,8,7.63,75.1,0,1
+25D01A0514,LAVANYA GOLAKONDA,Artificial Intelligence & Data Science,8,5.37,54.2,1,1
+25D01A0515,PURUSHOTHAM GUDLA,Information Technology,6,5.53,52.9,0,0
+25D01A0516,GURRAM AKSHITHA GURRAM,Electronics & Communication,4,7.0,68.2,0,0
+25D01A0517,VAISHNAVI GURRAM,Mechanical Engineering,8,5.65,58.7,2,3
+25D01A0518,JANGILI NARENDAR,Management & Business Analytics,6,7.75,82.2,0,1
+25D01A0519,Venu Javvaji,Computer Science & Engineering,4,5.32,51.5,0,0
+25D01A0520,HARITHA KODELA,Artificial Intelligence & Data Science,8,5.19,57.6,0,0
+25D01A0521,SHIVANJALI KANDI KONDA,Information Technology,8,9.09,88.3,0,1
+25D01A0522,KASHISH MODI,Electronics & Communication,8,7.28,67.9,0,1
+25D01A0523,KONDURI ARCHITHA,Mechanical Engineering,8,8.44,85.2,1,1
+25D01A0524,AKSHAY KOTTA,Management & Business Analytics,8,4.59,43.8,0,0
+25D01A0525,KOTTE VAISHNAVI,Computer Science & Engineering,4,6.45,63.6,1,1
+25D01A0526,KOVUR SHRAVYA,Artificial Intelligence & Data Science,8,6.53,63.5,1,1
+25D01A0527,KUDIPUDI ANISHWA,Information Technology,8,5.63,51.3,3,3
+25D01A0528,SRIVALLIKA KUNAVENI,Electronics & Communication,4,8.2,77.9,0,1
+25D01A0529,SRISHANTH KUNDETI,Mechanical Engineering,8,6.71,68.2,1,1
+25D01A0530,PRABHANJAN REDDY KUNDURU,Management & Business Analytics,6,6.71,63.4,0,0
+25D01A0531,KURUBA DEEPIKA Kuruva,Computer Science & Engineering,4,5.61,49.2,0,0
+25D01A0532,VANDHANA MUDAVATH,Artificial Intelligence & Data Science,8,9.53,94.4,0,0
+25D01A0533,N.SRISAHITHI NADAGANLA,Information Technology,4,6.73,65.9,3,3
+25D01A0534,SINDHUJA REDDY NAYINI,Electronics & Communication,6,5.83,57.9,0,0
+25D01A0535,ABHILASH OGGU,Mechanical Engineering,4,8.24,77.4,1,1
+25D01A0536,VIGNESH PANCHAGAM,Management & Business Analytics,8,4.83,47.3,4,6
+25D01A0537,VIGNESH PANCHAGAM,Computer Science & Engineering,4,8.57,85.4,0,1
+25D01A0538,SRIHARSHITHA PANCHALA,Artificial Intelligence & Data Science,6,5.02,51.9,4,4
+25D01A0539,P.SRIVIDYA PANJA SRIVIDYA,Information Technology,4,4.66,42.0,1,1
+25D01A0540,MANISH PATLOLLA,Electronics & Communication,6,7.44,71.4,0,0
+25D01A0541,Vamshi Peddauppari,Mechanical Engineering,8,8.36,84.0,0,0
+25D01A0542,SAIRAM POKALWAR,Management & Business Analytics,8,7.56,78.6,2,2
+25D01A0543,Goutham Reddy Pottemgari,Computer Science & Engineering,4,6.69,69.3,2,2
+25D01A0544,RAGULA SANJANA,Artificial Intelligence & Data Science,4,6.46,66.5,1,2
+25D01A0545,KARTHIK RAJBA,Information Technology,4,5.33,53.9,1,1
+25D01A0546,AFRDi Shaik,Electronics & Communication,4,7.1,72.9,0,0
+25D01A0547,MANISHA BEGUM SHAIK,Mechanical Engineering,6,5.65,58.0,1,1
+25D01A0548,Uma maheshwari Sigapatla,Management & Business Analytics,6,8.52,81.2,0,0
+25D01A0549,Akhila Thanugula,Computer Science & Engineering,6,6.44,61.2,1,1
+25D01A0550,AISHWARYA YADALA,Artificial Intelligence & Data Science,4,4.4,47.7,2,4
+25D01A0551,SHRAVAN KUMAR YAMOLLA,Information Technology,8,8.45,85.9,2,2
+25D01A0552,SATHWIKA AKARAPU,Electronics & Communication,8,7.3,72.9,0,0
+25D01A0553,SAIJEEVANA AMBATI,Mechanical Engineering,4,5.77,56.2,0,0
+25D01A0554,LIKITHKUMAR ANGIREKULA,Management & Business Analytics,6,8.49,85.5,0,1
+25D01A0555,Harshavardhan Brungi,Computer Science & Engineering,8,9.52,94.7,0,0
+25D01A0556,SINDUJA BALAYALLA,Artificial Intelligence & Data Science,4,8.75,84.8,0,0
+25D01A0557,Banoth Sohith,Information Technology,4,4.56,46.0,3,3
+25D01A0559,RAJRSH REDDY BOGGULA,Electronics & Communication,4,5.69,54.6,0,0
+25D01A0560,POORNA SURYA MANIKANTA CHAPPIDI,Mechanical Engineering,4,8.02,80.5,0,0
+25D01A0561,SRAVANI CHERUKURI,Management & Business Analytics,6,7.55,74.2,0,0
+25D01A0562,NAVEEN KUMAR CHINTHALA,Computer Science & Engineering,8,6.71,65.9,0,0
+25D01A0563,SUPRIYA DASARI,Artificial Intelligence & Data Science,8,6.66,64.9,0,0
+25D01A0564,SHIVA SAI DAYYALA,Information Technology,4,5.59,56.2,0,1
+25D01A0565,PUJITHA ENJAMURI,Electronics & Communication,6,5.75,59.6,1,3
+25D01A0566,SRI BALAJI GANDIKOTA,Mechanical Engineering,4,6.59,67.6,2,2
+25D01A0567,SRUJAN GOLUSULA,Management & Business Analytics,4,7.96,76.6,0,2
+25D01A0568,VYSHNAVI GOTLA,Computer Science & Engineering,8,7.24,81.2,0,1
+25D01A0569,CHANDU GURRAM,Artificial Intelligence & Data Science,4,7.97,79.3,0,2
+25D01A0570,ARJUN HULSURE,Information Technology,8,8.26,78.7,0,0
+25D01A0571,ROHITH VARMA KALAVENA,Electronics & Communication,6,5.32,52.7,0,0
+25D01A0572,MANOHAR GOUD KAPPA,Mechanical Engineering,8,7.35,78.5,0,0
+25D01A0573,RAMCHARAN KARATLAPALLY,Management & Business Analytics,8,8.71,87.9,0,0
+25D01A0574,Siri vennela Katagoni,Computer Science & Engineering,4,7.07,75.6,0,0
+25D01A0575,KAVYA KAVALI,Artificial Intelligence & Data Science,4,8.79,89.0,0,0
+25D01A0576,Hemanth Kolukulapally,Information Technology,6,4.4,46.9,1,1
+25D01A0577,SPOORTHI KURRA,Electronics & Communication,6,7.22,72.8,0,1
+25D01A0578,NARENDAR KUSA,Mechanical Engineering,4,7.09,67.8,0,0
+25D01A0579,SRIKRUTHI LACHUGARI,Management & Business Analytics,4,7.17,74.5,0,0
+25D01A0580,Mukesh teja Mangali,Computer Science & Engineering,8,6.79,66.8,1,2
+25D01A0581,BHANU TEJA MANDALA,Artificial Intelligence & Data Science,4,4.4,44.5,1,1
+25D01A0582,MIDHUNA PRIYA MOGULAGANI,Information Technology,4,6.53,62.2,1,3
+25D01A0583,NihalQayyum Mohammed,Electronics & Communication,6,6.88,71.5,0,2
+25D01A0584,ANJANI DEVI MUNDRA,Mechanical Engineering,6,9.0,89.4,0,1
+25D01A0585,LEELASREE NAMANI,Management & Business Analytics,6,6.61,66.9,3,4
+25D01A0586,PANDURANG NANGI,Computer Science & Engineering,8,6.75,73.0,1,1
+25D01A0587,NITHISHA ONTARI,Artificial Intelligence & Data Science,6,5.41,51.5,1,1
+25D01A0588,APARNA PADAM,Information Technology,6,9.58,92.8,0,0
+25D01A0589,SPANDANA PALLA,Electronics & Communication,6,5.51,55.1,2,2
+25D01A0590,SWAMY PITTALA,Mechanical Engineering,6,6.34,67.3,0,1
+25D01A0591,YUVARAJ POLICE PATIL,Management & Business Analytics,6,8.38,87.9,0,0
+25D01A0592,GANGABHAVANI RAYANAVENI,Computer Science & Engineering,8,7.97,83.1,1,1
+25D01A0593,MOKSHA AGNA THARAKA RAMA THEJA REBBU,Artificial Intelligence & Data Science,4,7.56,72.7,0,0
+25D01A0594,PARTHIV REDDY SANGAALA,Information Technology,4,6.27,57.8,0,0
+25D01A0595,SHIVA SARANKE,Electronics & Communication,6,6.3,68.0,1,1
+25D01A0596,MADHUMITHA SHANIGARAPU,Mechanical Engineering,6,6.48,62.0,1,1
+25D01A0597,SHUBHAM PAUL,Management & Business Analytics,4,5.96,57.0,0,1
+25D01A0598,Aditya Suraboyena,Computer Science & Engineering,4,7.25,69.2,0,0
+25D01A0599,MANASA TARRA,Artificial Intelligence & Data Science,6,7.02,67.5,0,1
+25D01A05A0,SRIJA VARA,Information Technology,8,7.0,67.0,0,1
+25D01A05A1,RUPA VARDHAM,Electronics & Communication,4,6.72,66.5,1,2
+25D01A05A2,HARI KRISHNA VENGALI,Mechanical Engineering,8,5.57,57.2,1,1
+25D01A05A3,Aaliya Mehreen,Management & Business Analytics,6,6.77,64.1,2,2
+25D01A05A4,Saikumar Ade,Computer Science & Engineering,8,6.52,63.7,3,4
+25D01A05A5,Vaishali Allipuram Vaishali,Artificial Intelligence & Data Science,8,5.95,64.4,3,4
+25D01A05A6,Angbuhang Sapana Limbu,Information Technology,6,7.63,76.6,0,1
+25D01A05A7,Abhiram yadav Annaveni,Electronics & Communication,6,7.27,69.9,0,0
+25D01A05A8,Asha. Toshith Goud,Mechanical Engineering,8,8.79,86.7,1,1
+25D01A05A9,Sai Teja Bairugonda,Management & Business Analytics,6,7.53,79.1,0,0
+25D01A05B0,BARIGALA AKSHAY KUMAR,Computer Science & Engineering,6,7.87,84.5,0,1
+25D01A05B1,VARSHITH BATHINI,Artificial Intelligence & Data Science,6,6.43,67.0,4,4
+25D01A05B2,ROHINI BOYALAPALLI,Information Technology,6,5.17,50.6,3,3
+25D01A05B4,UDAY GOUD CHEKKILLA,Electronics & Communication,6,6.71,64.8,2,4
+25D01A05B5,AKHIL CHEPURI,Mechanical Engineering,4,6.92,69.7,0,0
+25D01A05B6,indu Chinthareddy,Management & Business Analytics,6,9.85,99.0,0,0
+25D01A05B7,SAI GANESH CHITHRIYALA,Computer Science & Engineering,6,7.57,81.4,0,0
+25D01A05B8,Gachkeshwar Poojitha,Artificial Intelligence & Data Science,4,7.99,82.9,0,0
+25D01A05B9,MANIKIRAN GONTI,Information Technology,4,8.01,86.3,0,0
+25D01A05C0,Goud shirisha Goud,Electronics & Communication,4,5.43,53.4,0,2
+25D01A05C1,SAIRAJ GOUNDEMMMM,Mechanical Engineering,6,9.63,93.1,1,1
+25D01A05C2,SATHWIK GOVINDU,Management & Business Analytics,4,8.05,86.2,0,2
+25D01A05C3,SHESHANK GUDELUGULA,Computer Science & Engineering,6,8.08,81.4,0,2
+25D01A05C4,HARANI GUJJARI,Artificial Intelligence & Data Science,4,5.34,50.8,0,0
+25D01A05C5,Santhosh Jakkula,Information Technology,8,8.71,86.6,0,2
+25D01A05C6,sriteja Kalasani,Electronics & Communication,8,5.73,55.3,2,2
+25D01A05C7,MANASA Kankapuram,Mechanical Engineering,4,7.24,72.8,1,2
+25D01A05C8,JAIPAL KASA,Management & Business Analytics,8,9.85,93.4,0,0
+25D01A05C9,KODICHERLA SHIRISHA,Computer Science & Engineering,8,5.03,51.7,0,0
+25D01A05D0,PAVAN KUMAR KOLICHALAM,Artificial Intelligence & Data Science,6,6.03,56.9,1,2
+25D01A05D1,KIRAN Kolipaka kiran,Information Technology,4,7.94,82.8,1,1
+25D01A05D2,Ashwanth teja Madhuragiri,Electronics & Communication,6,7.71,72.4,0,0
+25D01A05D3,Nikhil MENGENI,Mechanical Engineering,6,5.16,50.7,1,2
+25D01A05D4,MOHAMMAD RAMZAN MOHAMMAD,Management & Business Analytics,8,7.18,71.7,0,0
+25D01A05D5,mohd imran shaik,Computer Science & Engineering,4,5.72,58.3,2,2
+25D01A05D6,BHAVANA MUTYALA,Artificial Intelligence & Data Science,8,7.5,74.0,0,0
+25D01A05D7,VAMSHI VISHNU PADAMATINTI,Information Technology,4,6.34,68.9,0,0
+25D01A05D8,JOHN BABU PASUPULETI,Electronics & Communication,6,8.32,82.6,0,0
+25D01A05D9,OMKAR PENTA,Mechanical Engineering,6,6.89,67.1,0,1
+25D01A05E0,SRINATH RASAMALLA,Management & Business Analytics,6,6.82,66.9,0,1
+25D01A05E2,NITHIN SHIVARATRI,Computer Science & Engineering,6,7.53,74.9,0,0
+25D01A05E3,BANUTEJA NAIK SUGALI,Artificial Intelligence & Data Science,4,5.05,49.5,0,0
+25D01A05E4,sravanthi Sunkaraboina,Information Technology,4,7.61,75.4,0,0
+25D01A05E5,Vishal goud Thalla,Electronics & Communication,4,7.66,76.1,1,1
+25D01A05E6,JAGAN MAHESH THANNIRU,Mechanical Engineering,8,4.4,44.7,0,1
+25D01A05E7,Varsha Thokala varsha,Management & Business Analytics,4,7.9,74.7,0,1
+25D01A05E8,SHRAVANI V SHRAVANI,Computer Science & Engineering,6,7.95,80.1,0,0
+25D01A05E9,Vaishnavi Vaishnavi Biradar,Artificial Intelligence & Data Science,6,7.88,72.1,0,1
+25D01A05F0,SHASHIKUMAR VANIGALLA,Information Technology,6,4.4,42.0,0,0
+25D01A05F1,ROHITH YANAMALLA,Electronics & Communication,4,5.88,54.3,1,1
+25D01A05F2,SAI PRANEETH REDDY YEllAKONDA,Mechanical Engineering,4,7.47,76.1,0,1
+25D01A05F3,Anil Ailla.Anil,Management & Business Analytics,8,7.16,70.9,1,1
+25D01A05F4,B Snehanjali Reddy Baddam,Computer Science & Engineering,8,6.91,73.4,2,2
+25D01A05F5,BAIROJA KAUSHIK,Artificial Intelligence & Data Science,8,7.33,73.3,0,0
+25D01A05F6,Manik Buradar,Information Technology,8,6.61,64.6,1,1
+25D01A05F7,Boga srilatha,Electronics & Communication,4,7.91,77.2,0,0
+25D01A05F8,Boyini Deekshitha,Mechanical Engineering,6,8.11,72.0,0,0
+25D01A05F9,Salomi Chilka,Management & Business Analytics,8,6.22,62.2,1,1
+25D01A05G0,Ch.umesh Chilla umesh,Computer Science & Engineering,6,9.5,98.3,0,0
+25D01A05G1,Naveen Chinnakarolla,Artificial Intelligence & Data Science,8,7.87,73.9,2,2
+25D01A05G2,Sathwik Dasari,Information Technology,8,5.26,54.9,0,0
+25D01A05G3,Abhiram Dommata,Electronics & Communication,4,8.36,82.3,0,2
+25D01A05G4,Mallikarjun Gangani,Mechanical Engineering,6,5.97,54.3,0,2
+25D01A05G5,Rathna kumar Golla,Management & Business Analytics,8,6.8,74.5,0,0
+25D01A05G6,Gunreddy Anvitha reddy,Computer Science & Engineering,4,8.53,86.4,0,2
+25D01A05G7,Jadi Hasini,Artificial Intelligence & Data Science,8,7.04,67.7,0,0
+25D01A05G8,Jaggupalli Bhargavi,Information Technology,6,8.65,87.4,0,0
+25D01A05G9,RAM CHARAN JAKKULA,Electronics & Communication,8,7.68,79.2,0,0
+25D01A05H0,Niranjan Jaligama Niranjan,Mechanical Engineering,6,8.17,77.4,0,0
+25D01A05H1,Jammu Kruthika,Management & Business Analytics,4,9.66,99.0,0,0
+25D01A05H2,Sreenithya Kacherla,Computer Science & Engineering,8,7.06,69.9,0,1
+25D01A05H3,Kambampati Havilah Shyeti,Artificial Intelligence & Data Science,6,5.9,58.3,0,2
+25D01A05H4,VINIL KAMDE,Information Technology,6,6.19,66.1,3,3
+25D01A05H5,Vinay Kannam vinay,Electronics & Communication,8,5.34,55.9,2,2
+25D01A05H6,Kasa Keerthana,Mechanical Engineering,6,6.45,63.8,3,3
+25D01A05H7,Kambampati Havilah Shyeti,Management & Business Analytics,8,8.09,77.8,0,0
+25D01A05H8,karunya koppolu,Computer Science & Engineering,4,7.9,74.4,0,1
+25D01A05H9,Ganesh Lavudya,Artificial Intelligence & Data Science,8,8.74,85.8,0,1
+25D01A05J0,Yaswanth Manne,Information Technology,8,8.69,86.1,1,1
+25D01A05J1,NANDINI MITTAPALLY,Electronics & Communication,6,7.68,79.3,1,1
+25D01A05J2,MOHAMMAD  Ayesha,Mechanical Engineering,4,7.43,74.1,0,0
+25D01A05J3,Saidulu Monavoni,Management & Business Analytics,4,9.85,99.0,1,1
+25D01A05J4,THANUJA MUTHYALA,Computer Science & Engineering,4,8.17,89.9,0,2
+25D01A05J5,pavani Naitham pavani,Artificial Intelligence & Data Science,4,5.11,52.5,0,2
+25D01A05J6,SHIVAMANI NUKALA,Information Technology,8,4.71,43.5,2,3
+25D01A05J7,Onteru Sanjay Onteru,Electronics & Communication,4,7.96,80.6,0,0
+25D01A05J8,Santhosh Orsu,Mechanical Engineering,6,6.26,65.9,0,0
+25D01A05J9,P.Nandhini P.Nandhini,Management & Business Analytics,6,8.24,82.1,0,0
+25D01A05K0,SRIKRISHNA PAYYAVULA,Computer Science & Engineering,4,7.52,85.2,0,1
+25D01A05K1,Nikhil vardhan Pendela,Artificial Intelligence & Data Science,6,7.07,68.3,0,0
+25D01A05K2,SAI GURUMURTHY P,Information Technology,8,6.17,59.1,2,2
+25D01A05K3,Arudra Pokalwar,Electronics & Communication,6,6.23,63.2,0,0
+25D01A05K4,Durga Prasad goud Pottigari,Mechanical Engineering,8,7.02,69.1,0,0
+25D01A05K5,Archana Ramula,Management & Business Analytics,8,7.76,77.4,0,1
+25D01A05K6,S AKHIL Sanda,Computer Science & Engineering,8,6.83,67.6,1,2
+25D01A05K7,Chandra Hadhiahna Thati,Artificial Intelligence & Data Science,6,5.92,55.1,0,0
+25D01A05K8,Vallepu Srujana,Information Technology,4,6.95,68.4,0,0
+25D01A05K9,Ramcharan Vangala,Electronics & Communication,4,8.51,82.1,0,0
+25D01A05L0,CHANDU VARUN VARA,Mechanical Engineering,4,6.93,70.7,0,1
+25D01A05L1,Joshua Viswanathapuram,Management & Business Analytics,8,6.61,68.3,2,2

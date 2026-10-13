@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Presentation | EduPulse AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="bg-slate-900 text-white min-h-screen flex flex-col justify-between p-6 md:p-12">
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-300">EduPulse AI • Demo Walkthrough Deck</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <span id="standalone-slide-counter" class="text-xs font-bold text-slate-400">Slide 1 of 7</span>
+            <a href="/" class="text-xs font-bold text-blue-400 hover:text-blue-300 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+                <i class="fas fa-columns mr-1"></i> Launch Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide Content Area -->
+    <div class="max-w-5xl mx-auto w-full my-8 bg-slate-950/80 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl relative min-h-[500px] flex flex-col justify-center">
+        <!-- Slide 1 -->
+        <div id="deck-1" class="deck-page space-y-6">
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-black uppercase tracking-widest text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-3 py-1 rounded-full">KPMG in India • CHALLENGE 04</span>
+                <span class="text-xs text-slate-400 font-semibold">• Campus Decision Intelligence</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                AI-Powered Student Analytics & Success Platform
+            </h1>
+            <p class="text-base text-slate-300 max-w-2xl leading-relaxed">
+                Empowering college administrators and faculty mentors with predictive decision intelligence. Moving beyond retrospective dashboards to proactively safeguard academic and placement outcomes across 7 unified campus data systems.
+            </p>
+            <div class="flex items-center gap-6 pt-4 text-xs text-slate-400">
+                <span><i class="fas fa-database text-blue-400 mr-1.5"></i> 7 Data Silos Unified</span>
+                <span><i class="fas fa-brain text-purple-400 mr-1.5"></i> Explainable AI (XAI)</span>
+                <span><i class="fas fa-bullseye text-emerald-400 mr-1.5"></i> Prescriptive Interventions</span>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div id="deck-2" class="deck-page hidden space-y-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-red-400 bg-red-950/80 border border-red-800 px-3 py-1 rounded-full">The Campus Problem</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">The Disconnected Campus Reality</h2>
+            <div class="grid grid-cols-2 gap-6 text-xs text-slate-300 pt-2">
+                <div class="p-5 bg-slate-900 border border-slate-800 rounded-2xl space-y-2">
+                    <h3 class="font-bold text-red-400 text-sm">Disjointed Operational Silos</h3>
+                    <p>Attendance is in biometric databases, internal marks in departmental spreadsheets, LMS clicks in cloud servers, and placement tests in external platforms.</p>
+                </div>
+                <div class="p-5 bg-slate-900 border border-slate-800 rounded-2xl space-y-2">
+                    <h3 class="font-bold text-red-400 text-sm">Reactive Post-Mortem Analysis</h3>
+                    <p>Faculty find out a student is failing when semester results are published; placement officers discover coding deficiencies after final recruitment drives.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div id="deck-3" class="deck-page hidden space-y-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-950/80 border border-blue-800 px-3 py-1 rounded-full">Unified Data Integration</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Cross-System ETL Data Pipeline</h2>
+            <p class="text-xs text-slate-300">EduPulse AI cleanses, aligns schemas, and unifies all 7 dimensions into a master 360° student record:</p>
+            <div class="grid grid-cols-4 gap-3 text-xs">
+                <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl">
+                    <div class="font-bold text-blue-400">Academic</div>
+                    <div class="text-[11px] text-slate-400 mt-1">CGPA, internal marks, backlogs</div>
+                </div>
+                <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl">
+                    <div class="font-bold text-cyan-400">Attendance</div>
+                    <div class="text-[11px] text-slate-400 mt-1">Overall %, core subject %, absences</div>
+                </div>
+                <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl">
+                    <div class="font-bold text-purple-400">LMS Activity</div>
+                    <div class="text-[11px] text-slate-400 mt-1">Logins, completion %, monthly hours</div>
+                </div>
+                <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl">
+                    <div class="font-bold text-emerald-400">Placement</div>
+                    <div class="text-[11px] text-slate-400 mt-1">Coding test, aptitude, mock interviews</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div id="deck-4" class="deck-page hidden space-y-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-purple-400 bg-purple-950/80 border border-purple-800 px-3 py-1 rounded-full">Scoring Logic</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Student Success Score (SSS) Formulation</h2>
+            <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl font-mono text-sm text-cyan-300">
+                SSS = 0.35 × Academic + 0.25 × Engagement/LMS + 0.30 × Placement + 0.10 × Feedback
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-xs text-slate-300">
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-800">
+                    <strong class="text-white block mb-1">Non-Linear Backlog Penalties:</strong>
+                    Direct deduction of 12 points per active backlog triggers early alerts before end-semesters.
+                </div>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-800">
+                    <strong class="text-white block mb-1">Dual-Axis Separation:</strong>
+                    Distinguishes academic retention risks from placement employability risks.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div id="deck-5" class="deck-page hidden space-y-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 border border-emerald-800 px-3 py-1 rounded-full">Explainable AI</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Transparent Driver Attribution (XAI)</h2>
+            <p class="text-xs text-slate-300">Scores must be actionable. We provide visible positive and negative drivers for every single student:</p>
+            <div class="grid grid-cols-2 gap-4 text-xs">
+                <div class="p-4 bg-emerald-950/40 border border-emerald-800 rounded-xl text-emerald-300 space-y-1">
+                    <strong class="text-emerald-200 block mb-1">Positive Strengths:</strong>
+                    <div>• +14.2 pts from High Coding Assessment (88/100)</div>
+                    <div>• +9.8 pts from 96% Consistent Attendance</div>
+                    <div>• +7.0 pts from Industry Certifications</div>
+                </div>
+                <div class="p-4 bg-red-950/40 border border-red-800 rounded-xl text-red-300 space-y-1">
+                    <strong class="text-red-200 block mb-1">Risk Drag Drivers:</strong>
+                    <div>• -18.0 pts from 2 Active Backlogs</div>
+                    <div>• -11.5 pts from Low LMS Assignment Completion</div>
+                    <div>• -7.5 pts from Weak Mock Interview Score</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div id="deck-6" class="deck-page hidden space-y-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/80 border border-pink-800 px-3 py-1 rounded-full">Targeted Segmentation</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">AI Segmentation & Targeted Personas</h2>
+            <div class="grid grid-cols-2 gap-4 text-xs text-slate-300">
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-800">
+                    <div class="font-bold text-purple-400">High Academic, Low Placement</div>
+                    <p class="text-slate-400 mt-1">High CGPA but freezes in coding. Strategy: DSA bootcamp & technical mock drills.</p>
+                </div>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-800">
+                    <div class="font-bold text-cyan-400">High Placement, Low Academic</div>
+                    <p class="text-slate-400 mt-1">Brilliant coder skipping lectures. Strategy: Attendance warning and backlog clearance contract.</p>
+                </div>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-800">
+                    <div class="font-bold text-amber-400">Disengaged High-Potential</div>
+                    <p class="text-slate-400 mt-1">High aptitude but absent from LMS. Strategy: Mentor counseling & motivational project ownership.</p>
+                </div>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-800">
+                    <div class="font-bold text-red-400">Critical Comprehensive Intervention</div>
+                    <p class="text-slate-400 mt-1">Dual academic & placement distress. Strategy: Dean counseling & structured academic rehabilitation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div id="deck-7" class="deck-page hidden space-y-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 border border-emerald-800 px-3 py-1 rounded-full">Value Realization</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Demonstrable Institutional Value</h2>
+            <div class="grid grid-cols-3 gap-4 text-center pt-2">
+                <div class="p-5 bg-slate-900 border border-slate-800 rounded-2xl">
+                    <div class="text-3xl font-extrabold text-blue-400">+22%</div>
+                    <div class="text-xs font-bold text-white mt-1">Placement Conversion</div>
+                </div>
+                <div class="p-5 bg-slate-900 border border-slate-800 rounded-2xl">
+                    <div class="text-3xl font-extrabold text-emerald-400">-35%</div>
+                    <div class="text-xs font-bold text-white mt-1">Academic Failures</div>
+                </div>
+                <div class="p-5 bg-slate-900 border border-slate-800 rounded-2xl">
+                    <div class="text-3xl font-extrabold text-purple-400">4×</div>
+                    <div class="text-xs font-bold text-white mt-1">Advisory Productivity</div>
+                </div>
+            </div>
+            <div class="text-center pt-4">
+                <a href="/" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-lg inline-flex items-center gap-2">
+                    <i class="fas fa-play"></i> Experience Live Application
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide Navigation Footer -->
+    <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+        <span class="text-xs text-slate-500">Use Left / Right arrow keys or buttons to navigate slides</span>
+        <div class="flex items-center gap-2">
+            <button onclick="changeStandaloneSlide(-1)" class="px-4 py-2 text-xs font-bold bg-slate-800 hover:bg-slate-700 text-white rounded-xl border border-slate-700">
+                <i class="fas fa-arrow-left mr-1"></i> Previous
+            </button>
+            <button onclick="changeStandaloneSlide(1)" class="px-4 py-2 text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-md">
+                Next <i class="fas fa-arrow-right ml-1"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const total = 7;
+
+        function showDeckSlide(n) {
+            if (n < 1) n = 1;
+            if (n > total) n = total;
+            currentSlide = n;
+
+            document.querySelectorAll('.deck-page').forEach(p => p.classList.add('hidden'));
+            const el = document.getElementById(`deck-${n}`);
+            if (el) el.classList.remove('hidden');
+
+            document.getElementById('standalone-slide-counter').innerText = `Slide ${n} of ${total}`;
+        }
+
+        function changeStandaloneSlide(delta) {
+            showDeckSlide(currentSlide + delta);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') changeStandaloneSlide(1);
+            if (e.key === 'ArrowLeft') changeStandaloneSlide(-1);
+        });
+    </script>
+</body>
+</html>

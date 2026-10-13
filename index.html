@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPulse AI | Enterprise Student Success Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kpmg: {
+                            blue: '#00338d',
+                            dark: '#001a49',
+                            light: '#0091da',
+                            accent: '#470a68'
+                        },
+                        brand: {
+                            orange: '#ea580c',
+                            'orange-light': '#f97316',
+                            'orange-dark': '#c2410c'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="bg-white text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- ============================================================== -->
+    <!-- TOP ENTERPRISE NAVIGATION BAR -->
+    <!-- ============================================================== -->
+    <header class="bg-slate-900 border-b border-orange-600/40 text-white sticky top-0 z-40 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Branding -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('dashboard')">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-500 flex items-center justify-center shadow-lg shadow-orange-500/25">
+                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-extrabold text-lg tracking-tight text-white">EduPulse <span class="text-orange-500">AI</span></span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-orange-950 text-orange-300 border border-orange-700/60 px-2 py-0.5 rounded-full">KPMG Advisory Suite</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Student Success & Early Warning Intelligence • St. Mary's Group</p>
+                    </div>
+                </div>
+
+                <!-- Primary Tabs Navigation -->
+                <nav class="hidden lg:flex items-center gap-1 bg-slate-950/80 p-1.5 rounded-xl border border-slate-800">
+                    <button data-view-target="dashboard" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-orange-600 text-white shadow-sm flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-chart-line text-white"></i> Dashboard
+                    </button>
+                    <button data-view-target="eduai" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-sparkles text-orange-400"></i> Edu AI
+                    </button>
+                    <button data-view-target="fees" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-receipt text-orange-400"></i> Fees Structure
+                    </button>
+                    <button data-view-target="feedback" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-chalkboard-teacher text-amber-400"></i> Lecture Feedback
+                    </button>
+                    <button data-view-target="lms" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-tasks text-cyan-400"></i> Assignments & Logins
+                    </button>
+                    <button data-view-target="interventions" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-hands-helping text-emerald-400"></i> Interventions
+                    </button>
+                    <button data-view-target="datahub" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-database text-purple-400"></i> Data Hub
+                    </button>
+                    <button data-view-target="methodology" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-file-alt text-blue-400"></i> Methodology
+                    </button>
+                    <button data-view-target="presentation" class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center gap-1.5 transition-all">
+                        <i class="fas fa-tv text-pink-400"></i> Demo Pitch
+                    </button>
+                </nav>
+
+                <!-- Actions & Auth Profile -->
+                <div class="flex items-center gap-2.5">
+                    <!-- API Key Status Pill -->
+                    <div class="hidden sm:flex items-center gap-1.5 text-[11px] bg-slate-800/90 text-emerald-300 border border-emerald-600/30 px-2.5 py-1 rounded-lg">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="font-mono font-semibold">FastAPI Key Verified</span>
+                    </div>
+
+                    <!-- Upload Excel / CSV Data Trigger -->
+                    <button onclick="openUploadModal()" class="inline-flex items-center gap-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg transition-all shadow-sm shadow-emerald-600/30">
+                        <i class="fas fa-file-excel"></i> <span>Upload Excel / CSV</span>
+                    </button>
+
+                    <!-- Auth Button / Profile -->
+                    <button id="btn-auth-trigger" onclick="openAuthModal()" class="inline-flex items-center gap-1.5 text-xs font-bold bg-orange-600 hover:bg-orange-500 text-white px-3 py-1.5 rounded-lg transition-all shadow-sm shadow-orange-600/30">
+                        <i class="fas fa-user-circle"></i> <span id="auth-status-label">Login / Register</span>
+                    </button>
+
+                    <button onclick="triggerReRunETL()" id="btn-rerun-etl" title="Re-sync all data silos" class="p-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs transition-colors">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Sub-bar -->
+        <div class="lg:hidden bg-slate-950 border-t border-slate-800 px-4 py-2 overflow-x-auto flex gap-2">
+            <button data-view-target="dashboard" class="px-2.5 py-1 text-xs rounded-md bg-orange-600 text-white whitespace-nowrap">Dashboard</button>
+            <button data-view-target="eduai" class="px-2.5 py-1 text-xs rounded-md text-slate-300 hover:bg-slate-800 whitespace-nowrap">Edu AI</button>
+            <button data-view-target="fees" class="px-2.5 py-1 text-xs rounded-md text-slate-300 hover:bg-slate-800 whitespace-nowrap">Fees Structure</button>
+            <button data-view-target="feedback" class="px-2.5 py-1 text-xs rounded-md text-slate-300 hover:bg-slate-800 whitespace-nowrap">Lecture Feedback</button>
+            <button data-view-target="lms" class="px-2.5 py-1 text-xs rounded-md text-slate-300 hover:bg-slate-800 whitespace-nowrap">Assignments & Logins</button>
+            <button data-view-target="interventions" class="px-2.5 py-1 text-xs rounded-md text-slate-300 hover:bg-slate-800 whitespace-nowrap">Interventions</button>
+            <button data-view-target="presentation" class="px-2.5 py-1 text-xs rounded-md text-slate-300 hover:bg-slate-800 whitespace-nowrap">Pitch Deck</button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full bg-white">
+
+        <!-- ============================================================== -->
+        <!-- VIEW 1: EXECUTIVE DASHBOARD -->
+        <!-- ============================================================== -->
+        <div id="view-dashboard" class="tab-view space-y-6">
+
+            <!-- Banner / KPMG Challenge 04 Header -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-slate-800 to-orange-950 p-6 rounded-2xl text-white shadow-lg border border-orange-500/30">
+                <div class="space-y-1.5">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-black tracking-widest uppercase bg-orange-500/20 text-orange-400 border border-orange-500/40 px-2.5 py-0.5 rounded-full">KPMG in India • CHALLENGE 04</span>
+                        <span class="text-xs text-slate-300 font-semibold">• 15-Year Enterprise Architecture</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white">AI-Powered Student Analytics & Success Platform</h1>
+                    <p class="text-slate-300 text-xs sm:text-sm max-w-3xl leading-relaxed">
+                        Unifying 198 enrolled student records across Academics, Attendance, LMS Logins, Placements, Skills, Fees Structure, and Lecture Feedback into actionable predictive intelligence.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <div class="bg-white/10 backdrop-blur border border-white/15 px-4 py-2.5 rounded-xl text-right">
+                        <div class="text-[10px] text-orange-400 uppercase tracking-wider font-bold">Enrolled Cohort</div>
+                        <div class="text-sm font-extrabold text-white">St. Mary's Group of Institutions</div>
+                        <div class="text-[10px] text-slate-300 mt-0.5">198 Verified Students • Fall 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Action Quick-Links -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <button onclick="switchTab('fees')" class="p-3 bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between text-orange-700">
+                        <span class="text-xs font-bold uppercase">Fees Structure</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                    <div class="text-sm font-black text-slate-900 mt-1">College, Exam & Hostel Fees</div>
+                </button>
+                <button onclick="switchTab('feedback')" class="p-3 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between text-amber-700">
+                        <span class="text-xs font-bold uppercase">Lecture Feedback</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                    <div class="text-sm font-black text-slate-900 mt-1">7 Faculty & Subjects Roster</div>
+                </button>
+                <button onclick="switchTab('lms')" class="p-3 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between text-blue-700">
+                        <span class="text-xs font-bold uppercase">Assignments & Logins</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                    <div class="text-sm font-black text-slate-900 mt-1">Login Count & Telemetry</div>
+                </button>
+                <button onclick="switchTab('eduai')" class="p-3 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between text-purple-700">
+                        <span class="text-xs font-bold uppercase">Edu AI Copilot</span>
+                        <i class="fas fa-sparkles text-xs"></i>
+                    </div>
+                    <div class="text-sm font-black text-slate-900 mt-1">Ask Decision Intelligence Copilot</div>
+                </button>
+            </div>
+
+            <!-- Edu AI Decision Intelligence Findings Strip -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="bg-white border-l-4 border-l-orange-500 border border-slate-200 rounded-xl p-3.5 shadow-sm text-xs space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="font-extrabold text-orange-600 uppercase text-[10px] tracking-wider flex items-center gap-1.5">
+                            <i class="fas fa-brain"></i> Edu AI Finding #1
+                        </span>
+                        <span class="bg-orange-100 text-orange-800 text-[10px] font-bold px-1.5 py-0.5 rounded">Mismatch Alert</span>
+                    </div>
+                    <p class="text-slate-700 font-medium leading-snug">
+                        <strong>Theory vs Code Discrepancy:</strong> Students with CGPA &ge; 8.0 but low coding (&lt;50) detected. Prescribed 14-day hands-on DSA bootcamp.
+                    </p>
+                </div>
+
+                <div class="bg-white border-l-4 border-l-amber-500 border border-slate-200 rounded-xl p-3.5 shadow-sm text-xs space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="font-extrabold text-amber-600 uppercase text-[10px] tracking-wider flex items-center gap-1.5">
+                            <i class="fas fa-clock"></i> Edu AI Finding #2
+                        </span>
+                        <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">Leading Signal</span>
+                    </div>
+                    <p class="text-slate-700 font-medium leading-snug">
+                        <strong>Biometric Attendance Vulnerability:</strong> Biometric drops below 75% precede academic failure by 18 days. Triggering automated alerts.
+                    </p>
+                </div>
+
+                <div class="bg-white border-l-4 border-l-red-500 border border-slate-200 rounded-xl p-3.5 shadow-sm text-xs space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="font-extrabold text-red-600 uppercase text-[10px] tracking-wider flex items-center gap-1.5">
+                            <i class="fas fa-exclamation-triangle"></i> Edu AI Finding #3
+                        </span>
+                        <span class="bg-red-100 text-red-800 text-[10px] font-bold px-1.5 py-0.5 rounded">LMS Warning</span>
+                    </div>
+                    <p class="text-slate-700 font-medium leading-snug">
+                        <strong>Digital Disengagement:</strong> Dormant learners logging &lt; 5 times this week identified. Automated SMS and mentor nudge triggered.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Top Executive KPI Scorecards -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                <div class="card-white p-4">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Students</div>
+                    <div class="text-2xl font-black text-slate-900 mt-1" id="kpi-total-students">198</div>
+                    <div class="text-[11px] text-emerald-600 font-semibold mt-0.5">100% DB Synced</div>
+                </div>
+
+                <div class="card-white p-4 border-t-4 border-t-orange-600">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Avg Success Score</div>
+                    <div class="text-2xl font-black text-orange-600 mt-1" id="kpi-avg-sss">--</div>
+                    <div class="text-[11px] text-slate-500 font-medium mt-0.5">Scale: 0 – 100 SSS</div>
+                </div>
+
+                <div class="card-white p-4 border-t-4 border-t-red-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Critical Risk</div>
+                    <div class="text-2xl font-black text-red-600 mt-1" id="kpi-critical-risk">--</div>
+                    <div class="text-[11px] text-red-600 font-bold mt-0.5 flex items-center gap-1">
+                        <span class="pulse-dot pulse-dot-critical"></span> Immediate Action
+                    </div>
+                </div>
+
+                <div class="card-white p-4 border-t-4 border-t-orange-400">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">High Risk</div>
+                    <div class="text-2xl font-black text-orange-500 mt-1" id="kpi-high-risk">--</div>
+                    <div class="text-[11px] text-slate-500 font-medium mt-0.5" id="kpi-at-risk-pct">--% of cohort</div>
+                </div>
+
+                <div class="card-white p-4">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Avg Academic Index</div>
+                    <div class="text-2xl font-black text-blue-600 mt-1" id="kpi-academic-health">--</div>
+                    <div class="text-[11px] text-slate-500 font-medium mt-0.5">CGPA + Internal Marks</div>
+                </div>
+
+                <div class="card-white p-4">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Placement Readiness</div>
+                    <div class="text-2xl font-black text-emerald-600 mt-1" id="kpi-placement-readiness">--</div>
+                    <div class="text-[11px] text-slate-500 font-medium mt-0.5">Coding + Aptitude + Mocks</div>
+                </div>
+            </div>
+
+            <!-- Visual Analytics Grid: 4 Core Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                <!-- Chart 1: Success Score Distribution -->
+                <div class="card-white p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-orange-600">Student Success Score Distribution (SSS 0-100)</h3>
+                            <p class="text-xs text-slate-400">Cohort distribution across Risk and Performance Quintiles</p>
+                        </div>
+                        <span class="text-xs bg-orange-50 text-orange-700 px-2 py-0.5 rounded-full font-bold">Histogram</span>
+                    </div>
+                    <div class="h-64 relative">
+                        <canvas id="chart-score-dist"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Dual-Axis Scatter (Academics vs Placement) -->
+                <div class="card-white p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-orange-600">Dual-Axis Risk Matrix: Academics vs. Placement</h3>
+                            <p class="text-xs text-slate-400">Identifies students strong in theory but weak in placement coding</p>
+                        </div>
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-bold">Scatter Matrix</span>
+                    </div>
+                    <div class="h-64 relative">
+                        <canvas id="chart-risk-scatter"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 3: Segmentation Donut -->
+                <div class="card-white p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-orange-600">Behavioral Student Segmentation (Bonus Feature)</h3>
+                            <p class="text-xs text-slate-400">Actionable student clusters enabling targeted institutional support</p>
+                        </div>
+                        <span class="text-xs bg-purple-50 text-purple-700 px-2 py-0.5 rounded-full font-bold">4 Personas</span>
+                    </div>
+                    <div class="h-64 relative flex items-center justify-center">
+                        <canvas id="chart-segmentation"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 4: Department Benchmarks -->
+                <div class="card-white p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-orange-600">Departmental Performance Benchmarks</h3>
+                            <p class="text-xs text-slate-400">Comparative mean scores and at-risk rates across engineering branches</p>
+                        </div>
+                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-bold">Branch Breakdown</span>
+                    </div>
+                    <div class="h-64 relative">
+                        <canvas id="chart-dept-benchmarks"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Master Student Roster & Early Warning Table -->
+            <div class="card-white overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-lg font-black text-orange-600">Unified Student Success Roster</h2>
+                        <p class="text-xs text-slate-500">198 real student records from St. Mary's Group of Institutions with explainable score drivers</p>
+                    </div>
+                    <!-- Search & Filters -->
+                    <div class="flex flex-wrap items-center gap-2">
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                            <input type="text" id="filter-search" placeholder="Search name, roll no..."
+                                class="pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 w-48 sm:w-56">
+                        </div>
+                        <select id="filter-department" class="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-700 focus:outline-none">
+                            <option value="All">All Branches</option>
+                            <option value="Computer Science">Computer Science (CSE)</option>
+                            <option value="Information Technology">Information Tech (IT)</option>
+                            <option value="Electronics & Communication">Electronics (ECE)</option>
+                            <option value="Data Science & AI">Data Science & AI</option>
+                        </select>
+                        <select id="filter-risk" class="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-700 focus:outline-none">
+                            <option value="All">All Risk Levels</option>
+                            <option value="Critical">Critical Risk</option>
+                            <option value="High">High Risk</option>
+                            <option value="Medium">Medium Risk</option>
+                            <option value="Low">Low Risk</option>
+                        </select>
+                        <select id="filter-segment" class="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-700 focus:outline-none">
+                            <option value="All">All Segments</option>
+                            <option value="High Academic, Low Placement">High Acad, Low Placement</option>
+                            <option value="Consistent High Achiever">Consistent High Achiever</option>
+                            <option value="High Placement, Low Academic">High Placement, Low Acad</option>
+                            <option value="Disengaged At-Risk">Disengaged At-Risk</option>
+                        </select>
+                        <button onclick="openUploadModal()" class="px-3 py-1.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg shadow-sm flex items-center gap-1.5 transition-all">
+                            <i class="fas fa-file-excel"></i> Import Excel Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Table Content -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-enterprise">
+                        <thead>
+                            <tr>
+                                <th>Student Details</th>
+                                <th>Branch & Sem</th>
+                                <th>CGPA</th>
+                                <th>Attendance</th>
+                                <th>LMS Logins</th>
+                                <th>Placement Code</th>
+                                <th>Success Score</th>
+                                <th>Risk Flag</th>
+                                <th>Segment Persona</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-table-body" class="divide-y divide-slate-100">
+                            <!-- Populated dynamically via app.js -->
+                            <tr>
+                                <td colspan="10" class="text-center py-8 text-slate-400">Loading student intelligence data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination Footer -->
+                <div class="px-5 py-3 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between text-xs text-slate-500">
+                    <div id="pagination-info">Showing 1 to 15 of 198 students</div>
+                    <div class="flex items-center gap-1.5">
+                        <button id="btn-prev-page" class="px-3 py-1 bg-white border border-slate-200 rounded-md hover:bg-slate-100 disabled:opacity-40">Previous</button>
+                        <button id="btn-next-page" class="px-3 py-1 bg-white border border-slate-200 rounded-md hover:bg-slate-100 disabled:opacity-40">Next</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 2: FEES STRUCTURE (NEW REQUIRED MODULE) -->
+        <!-- ============================================================== -->
+        <div id="view-fees" class="tab-view hidden space-y-6">
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Financial Governance</span>
+                        <span class="text-xs text-slate-400">• Institutional Fee Collection</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-orange-600 mt-1">Fees Structure & Student Financial Ledger</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+                        Comprehensive ledger tracking College Fees (₹85,000), Exam Fees (₹2,500), and Hostel Fees (₹45,000) with real-time clearance status.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="openPaymentModal()" class="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs rounded-xl shadow-sm shadow-orange-600/30 flex items-center gap-1.5">
+                        <i class="fas fa-hand-holding-usd"></i> Record Fee Payment
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top Fee KPI Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="card-white p-4">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Assessed Fees</div>
+                    <div class="text-2xl font-black text-slate-900 mt-1" id="fee-total-assessed">₹--</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">Across 198 Students</div>
+                </div>
+                <div class="card-white p-4 border-t-4 border-t-emerald-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Collected</div>
+                    <div class="text-2xl font-black text-emerald-600 mt-1" id="fee-total-collected">₹--</div>
+                    <div class="text-[11px] text-emerald-600 font-semibold mt-0.5" id="fee-recovery-rate">--% Recovery Rate</div>
+                </div>
+                <div class="card-white p-4 border-t-4 border-t-orange-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Outstanding Dues</div>
+                    <div class="text-2xl font-black text-orange-600 mt-1" id="fee-total-due">₹--</div>
+                    <div class="text-[11px] text-orange-600 font-semibold mt-0.5">Pending Clearance</div>
+                </div>
+                <div class="card-white p-4">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Full Clearance %</div>
+                    <div class="text-2xl font-black text-blue-600 mt-1" id="fee-clearance-rate">--%</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">Students With 0 Arrears</div>
+                </div>
+            </div>
+
+            <!-- Fee Components Breakdown Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- College Fees -->
+                <div class="card-white p-5 fee-card-college">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg">Category 01</span>
+                        <span class="text-xs font-bold text-slate-500">Mandatory / Year</span>
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mt-2">College Fees</h3>
+                    <div class="text-2xl font-black text-blue-600 mt-1">₹85,000 <span class="text-xs font-medium text-slate-400">/ student</span></div>
+                    <p class="text-xs text-slate-500 mt-1">Covers standard tuition, high-performance computing labs, digital library, and campus infrastructure.</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500">Total Enrolled Pool:</span>
+                        <span class="font-bold text-slate-900" id="fee-pool-college">₹1.68 Cr</span>
+                    </div>
+                </div>
+
+                <!-- Exam Fees -->
+                <div class="card-white p-5 fee-card-exam">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded-lg">Category 02</span>
+                        <span class="text-xs font-bold text-slate-500">Per Semester</span>
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mt-2">Exam Fees</h3>
+                    <div class="text-2xl font-black text-purple-600 mt-1">₹2,500 <span class="text-xs font-medium text-slate-400">/ semester</span></div>
+                    <p class="text-xs text-slate-500 mt-1">Covers semester examination enrollment, external evaluation, hall tickets, and grade card issuance.</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500">Hall Ticket Clearance:</span>
+                        <span class="font-bold text-emerald-600" id="fee-pool-exam">94.2% Cleared</span>
+                    </div>
+                </div>
+
+                <!-- Hostel Fees -->
+                <div class="card-white p-5 fee-card-hostel">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black uppercase tracking-wider text-orange-700 bg-orange-50 px-2.5 py-1 rounded-lg">Category 03</span>
+                        <span class="text-xs font-bold text-slate-500">Residential Scholars</span>
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mt-2">Hostel & Mess Fees</h3>
+                    <div class="text-2xl font-black text-orange-600 mt-1">₹45,000 <span class="text-xs font-medium text-slate-400">/ semester</span></div>
+                    <p class="text-xs text-slate-500 mt-1">Covers AC/Non-AC accommodation, nutritious boarding mess, high-speed Wi-Fi, and 24/7 security.</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500">Hostel Residents:</span>
+                        <span class="font-bold text-slate-900" id="fee-pool-hostel">124 Scholars</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Fees Ledger Table -->
+            <div class="card-white overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-base font-bold text-orange-600">Student Fees Roster & Clearance Status</h3>
+                        <p class="text-xs text-slate-400">Search and verify fee statuses across college, exam, and hostel components</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="fees-search" placeholder="Search student by name or roll..."
+                            class="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        <select id="fees-status-filter" class="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-700">
+                            <option value="All">All Statuses</option>
+                            <option value="Paid">Fully Paid</option>
+                            <option value="Partial">Partial</option>
+                            <option value="Overdue">Overdue / Due</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-enterprise">
+                        <thead>
+                            <tr>
+                                <th>Student ID & Name</th>
+                                <th>Roll Number</th>
+                                <th>Total Fee</th>
+                                <th>Paid Amount</th>
+                                <th>Balance Due</th>
+                                <th>College (₹85k)</th>
+                                <th>Exam (₹2.5k)</th>
+                                <th>Hostel (₹45k)</th>
+                                <th>Status</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fees-table-body" class="divide-y divide-slate-100">
+                            <!-- Populated dynamically -->
+                            <tr>
+                                <td colspan="10" class="text-center py-6 text-slate-400">Loading fees ledger records...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 3: LECTURE FEEDBACK (NEW REQUIRED MODULE) -->
+        <!-- ============================================================== -->
+        <div id="view-feedback" class="tab-view hidden space-y-6">
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Academic Quality Assurance</span>
+                        <span class="text-xs text-slate-400">• Continuous Student Appraisal</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-orange-600 mt-1">Faculty Lecture Feedback & Course Reviews</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+                        Evaluating teaching effectiveness across core subjects: DBMS, IE, DM, JAVA, SE, COA, and CRT.
+                    </p>
+                </div>
+                <button onclick="openFeedbackModal()" class="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs rounded-xl shadow-sm shadow-orange-600/30 flex items-center gap-1.5">
+                    <i class="fas fa-comment-dots"></i> Submit Course Feedback
+                </button>
+            </div>
+
+            <!-- Institutional Faculty Benchmark Strip -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="card-white p-4">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Core Faculty Evaluated</div>
+                    <div class="text-2xl font-black text-slate-900 mt-1">7 Professors</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">100% Core Curriculum</div>
+                </div>
+                <div class="card-white p-4 border-t-4 border-t-amber-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Institutional Avg Rating</div>
+                    <div class="text-2xl font-black text-amber-500 mt-1" id="feedback-avg-rating">4.72 / 5.0</div>
+                    <div class="text-[11px] text-amber-600 font-semibold mt-0.5">★★★★★ Scale</div>
+                </div>
+                <div class="card-white p-4 border-t-4 border-t-blue-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Concept Clarity Mean</div>
+                    <div class="text-2xl font-black text-blue-600 mt-1">91.8%</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">Student Comprehension</div>
+                </div>
+                <div class="card-white p-4 border-t-4 border-t-emerald-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Positive Sentiment</div>
+                    <div class="text-2xl font-black text-emerald-600 mt-1">94.4%</div>
+                    <div class="text-[11px] text-emerald-600 font-semibold mt-0.5">AI Sentiment Scoring</div>
+                </div>
+            </div>
+
+            <!-- Faculty Grid: 7 Exact Faculty & Subjects -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="faculty-cards-container">
+                <!-- Pre-rendered or dynamically rendered cards for:
+                     1. DBMS - Prof. Samdhasiva
+                     2. IE - Prof. Ramudu
+                     3. DM - Prof. Shateesh
+                     4. JAVA - Prof. LN Rao
+                     5. SE - Prof. Manohar
+                     6. COA - Prof. Sampath
+                     7. CRT - Prof. Chakiri
+                -->
+            </div>
+
+            <!-- Recent Student Feedback Quotes Stream -->
+            <div class="card-white p-5">
+                <h3 class="text-sm font-bold text-orange-600 mb-3">Live Qualitative Feedback & Student Verbatim</h3>
+                <div class="space-y-3" id="recent-reviews-stream">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 4: ASSIGNMENTS & LMS LOGINS (NEW REQUIRED MODULE) -->
+        <!-- ============================================================== -->
+        <div id="view-lms" class="tab-view hidden space-y-6">
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">LMS Digital Footprint</span>
+                        <span class="text-xs text-slate-400">• Telemetry & Login Frequency</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-orange-600 mt-1">Assignments & LMS Login Analytics</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+                        Inspect how often students log into the LMS portal, complete assignments, and track digital engagement early warnings.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-slate-500">Threshold:</span>
+                    <span class="text-xs font-bold bg-red-100 text-red-700 px-2.5 py-1 rounded-lg">&lt; 5 weekly logins = Dormant Alert</span>
+                </div>
+            </div>
+
+            <!-- Big KPI Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="card-white p-4">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Semester Logins</div>
+                    <div class="text-2xl font-black text-slate-900 mt-1" id="lms-total-logins">--</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">Cohort Engagement Sum</div>
+                </div>
+                <div class="card-white p-4 border-t-4 border-t-blue-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Avg Weekly Logins</div>
+                    <div class="text-2xl font-black text-blue-600 mt-1" id="lms-avg-weekly">--</div>
+                    <div class="text-[11px] text-blue-600 font-semibold mt-0.5">Logins / Student / Week</div>
+                </div>
+                <div class="card-white p-4 border-t-4 border-t-emerald-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Assignment Submission Rate</div>
+                    <div class="text-2xl font-black text-emerald-600 mt-1" id="lms-completion-rate">--%</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">On-time Submissions</div>
+                </div>
+                <div class="card-white p-4 border-t-4 border-t-red-500">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Dormant Users Alert</div>
+                    <div class="text-2xl font-black text-red-600 mt-1" id="lms-dormant-count">--</div>
+                    <div class="text-[11px] text-red-600 font-bold mt-0.5">Requires Immediate Nudge</div>
+                </div>
+            </div>
+
+            <!-- Login Frequency & Assignment Inspector Table -->
+            <div class="card-white overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-base font-bold text-orange-600">Student LMS Login & Assignment Completion Tracker</h3>
+                        <p class="text-xs text-slate-400">Filter students by weekly login count and assignment submission consistency</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="lms-search" placeholder="Search student..."
+                            class="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        <select id="lms-freq-filter" class="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-700">
+                            <option value="All">All Login Frequencies</option>
+                            <option value="High">Daily Active (&gt;15/week)</option>
+                            <option value="Medium">Weekly Active (7-15/week)</option>
+                            <option value="Low">Dormant (&lt;7/week)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-enterprise">
+                        <thead>
+                            <tr>
+                                <th>Student Details</th>
+                                <th>Branch</th>
+                                <th>Weekly Login Frequency</th>
+                                <th>Total Logins (Semester)</th>
+                                <th>Assignment Completion Rate</th>
+                                <th>LMS Hours Logged</th>
+                                <th>Engagement Tier</th>
+                                <th>Last Active Date</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lms-table-body" class="divide-y divide-slate-100">
+                            <!-- Populated dynamically via app.js -->
+                            <tr>
+                                <td colspan="9" class="text-center py-6 text-slate-400">Loading LMS engagement metrics...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW: EDU AI DECISION INTELLIGENCE WORKSPACE -->
+        <!-- ============================================================== -->
+        <div id="view-eduai" class="tab-view hidden space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-700 px-2.5 py-0.5 rounded-full flex items-center gap-1.5">
+                            <i class="fas fa-sparkles"></i> 24/7 Academic Copilot
+                        </span>
+                        <span class="text-xs text-slate-400">• Natural Language Decision Intelligence</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-orange-600 mt-1">Edu AI Decision Intelligence Workspace</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+                        Ask complex natural language queries about student risks, fees collections, faculty ratings, or LMS telemetry.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="clearCopilotWorkspaceChat()" class="px-3.5 py-2 text-xs font-bold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all">
+                        <i class="fas fa-trash-alt mr-1"></i> Clear Transcript
+                    </button>
+                    <button onclick="exportCopilotTranscript()" class="px-3.5 py-2 text-xs font-bold bg-orange-600 hover:bg-orange-500 text-white rounded-xl shadow-sm transition-all">
+                        <i class="fas fa-download mr-1"></i> Export Intelligence Brief
+                    </button>
+                </div>
+            </div>
+
+            <!-- Workspace Main Layout: Split 2-Column -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left Sidebar: Playbook & Quick Queries (4 cols) -->
+                <div class="lg:col-span-4 space-y-4">
+                    <!-- Live Data Lake Context Box -->
+                    <div class="card-white p-4 border-l-4 border-l-orange-500 space-y-2">
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Active Telemetry Context</div>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="p-2 bg-slate-50 rounded-lg">
+                                <span class="text-slate-400 block text-[10px]">Students</span>
+                                <strong class="text-slate-900 font-bold">198 Verified</strong>
+                            </div>
+                            <div class="p-2 bg-slate-50 rounded-lg">
+                                <span class="text-slate-400 block text-[10px]">Core Faculty</span>
+                                <strong class="text-slate-900 font-bold">7 Evaluated</strong>
+                            </div>
+                            <div class="p-2 bg-slate-50 rounded-lg">
+                                <span class="text-slate-400 block text-[10px]">Total Billed Fees</span>
+                                <strong class="text-orange-600 font-bold">₹2.32 Crore</strong>
+                            </div>
+                            <div class="p-2 bg-slate-50 rounded-lg">
+                                <span class="text-slate-400 block text-[10px]">LMS Logins</span>
+                                <strong class="text-blue-600 font-bold">27,480+</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prompt Playbook Cards -->
+                    <div class="card-white p-4 space-y-3">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-orange-600 flex items-center gap-1.5">
+                            <i class="fas fa-bolt"></i> Decision Intelligence Playbook
+                        </h3>
+                        <p class="text-[11px] text-slate-500">Click any scenario to ask Edu AI immediately:</p>
+                        
+                        <div class="space-y-2">
+                            <button onclick="sendWorkspacePrompt('Who are the critical at-risk students?')" class="w-full text-left p-2.5 rounded-xl border border-slate-200 hover:border-orange-500 hover:bg-orange-50/50 transition-all text-xs font-semibold text-slate-700 flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                    Critical At-Risk Students
+                                </span>
+                                <i class="fas fa-arrow-right text-[10px] text-slate-400 group-hover:text-orange-600"></i>
+                            </button>
+
+                            <button onclick="sendWorkspacePrompt('Show DBMS feedback for Prof. Samdhasiva')" class="w-full text-left p-2.5 rounded-xl border border-slate-200 hover:border-orange-500 hover:bg-orange-50/50 transition-all text-xs font-semibold text-slate-700 flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                    Prof. Samdhasiva (DBMS Reviews)
+                                </span>
+                                <i class="fas fa-arrow-right text-[10px] text-slate-400 group-hover:text-orange-600"></i>
+                            </button>
+
+                            <button onclick="sendWorkspacePrompt('Show JAVA feedback for Prof. LN Rao')" class="w-full text-left p-2.5 rounded-xl border border-slate-200 hover:border-orange-500 hover:bg-orange-50/50 transition-all text-xs font-semibold text-slate-700 flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                    Prof. LN Rao (JAVA Reviews)
+                                </span>
+                                <i class="fas fa-arrow-right text-[10px] text-slate-400 group-hover:text-orange-600"></i>
+                            </button>
+
+                            <button onclick="sendWorkspacePrompt('What is the fee collection status for hostel and college fees?')" class="w-full text-left p-2.5 rounded-xl border border-slate-200 hover:border-orange-500 hover:bg-orange-50/50 transition-all text-xs font-semibold text-slate-700 flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    College, Exam & Hostel Fees Audit
+                                </span>
+                                <i class="fas fa-arrow-right text-[10px] text-slate-400 group-hover:text-orange-600"></i>
+                            </button>
+
+                            <button onclick="sendWorkspacePrompt('Which students have low LMS login frequency (< 5 logins/week)?')" class="w-full text-left p-2.5 rounded-xl border border-slate-200 hover:border-orange-500 hover:bg-orange-50/50 transition-all text-xs font-semibold text-slate-700 flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                                    Dormant LMS (< 5 logins/wk)
+                                </span>
+                                <i class="fas fa-arrow-right text-[10px] text-slate-400 group-hover:text-orange-600"></i>
+                            </button>
+
+                            <button onclick="sendWorkspacePrompt('Explain Student Success Score formula and weights')" class="w-full text-left p-2.5 rounded-xl border border-slate-200 hover:border-orange-500 hover:bg-orange-50/50 transition-all text-xs font-semibold text-slate-700 flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                                    SSS Mathematical Formulation
+                                </span>
+                                <i class="fas fa-arrow-right text-[10px] text-slate-400 group-hover:text-orange-600"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Pane: Large Interactive Chat Console (8 cols) -->
+                <div class="lg:col-span-8 flex flex-col card-white overflow-hidden h-[680px]">
+                    <!-- Stream Area -->
+                    <div id="workspace-chat-stream" class="flex-1 overflow-y-auto p-5 bg-slate-50/60 flex flex-col gap-3">
+                        <div class="chat-bubble chat-bubble-bot w-full max-w-full">
+                            <div class="flex items-center gap-2 mb-2 pb-2 border-b border-slate-100">
+                                <div class="w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold text-xs">
+                                    <i class="fas fa-sparkles"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-xs">Edu AI Assistant Ready</h3>
+                                    <p class="text-[10px] text-slate-400">15-Year Senior Technical Standards • Synchronized with 198 Student Records</p>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                Welcome to the <strong>Edu AI Decision Intelligence Console</strong>. You can ask for real-time diagnostics on student academic risks, fee collections across college/exam/hostel tiers, lecture ratings for the 7 faculty members, or weekly LMS telemetry.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Input Box -->
+                    <form onsubmit="handleWorkspaceSubmit(event)" class="p-3 bg-white border-t border-slate-200 flex items-center gap-2">
+                        <input type="text" id="workspace-input-text" placeholder="Ask Edu AI anything about students, faculty, fees, logins..." required
+                            class="flex-1 px-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        <button type="submit" class="px-5 py-2 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-sm shadow-orange-600/30 transition-all">
+                            <i class="fas fa-paper-plane"></i> Ask Edu AI
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 6: ACTION & INTERVENTIONS -->
+        <!-- ============================================================== -->
+        <div id="view-interventions" class="tab-view hidden space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div>
+                    <h2 class="text-2xl font-black text-orange-600">Targeted Interventions & Remediation Center</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Assign, track, and measure the effectiveness of remediation protocols for at-risk cohorts.</p>
+                </div>
+                <button onclick="openInterventionModal()" class="inline-flex items-center gap-2 px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white rounded-xl text-xs font-bold shadow-sm shadow-orange-600/30 transition-all">
+                    <i class="fas fa-plus"></i> Log New Intervention
+                </button>
+            </div>
+
+            <!-- Interventions Summary KPI -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                <div class="card-white p-4">
+                    <div class="text-xs font-bold text-slate-400 uppercase">Active Cases</div>
+                    <div class="text-2xl font-black text-slate-800 mt-1" id="int-stat-total">0</div>
+                </div>
+                <div class="card-white p-4 border-l-4 border-l-amber-500">
+                    <div class="text-xs font-bold text-amber-500 uppercase">Pending Review</div>
+                    <div class="text-2xl font-black text-amber-600 mt-1" id="int-stat-pending">0</div>
+                </div>
+                <div class="card-white p-4 border-l-4 border-l-blue-500">
+                    <div class="text-xs font-bold text-blue-500 uppercase">In Progress</div>
+                    <div class="text-2xl font-black text-blue-600 mt-1" id="int-stat-progress">0</div>
+                </div>
+                <div class="card-white p-4 border-l-4 border-l-emerald-500">
+                    <div class="text-xs font-bold text-emerald-500 uppercase">Completed / Closed</div>
+                    <div class="text-2xl font-black text-emerald-600 mt-1" id="int-stat-completed">0</div>
+                </div>
+            </div>
+
+            <!-- Interventions List Table -->
+            <div class="card-white overflow-hidden">
+                <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                    <h3 class="text-sm font-bold text-orange-600">Active Remediation Cases & Mentorship Log</h3>
+                    <span class="text-xs text-slate-400">Updated in real-time</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-enterprise">
+                        <thead>
+                            <tr>
+                                <th>Case ID</th>
+                                <th>Student</th>
+                                <th>Intervention Protocol</th>
+                                <th>Assigned Mentor</th>
+                                <th>Target Date</th>
+                                <th>Status</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="interventions-table-body" class="divide-y divide-slate-100">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 6: DATA INTEGRATION HUB -->
+        <!-- ============================================================== -->
+        <div id="view-datahub" class="tab-view hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-black text-orange-600">Unified Data Integration Hub (8 Core Silos)</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                    Enterprise ETL pipeline synchronizing disconnected campus systems into a single relational view.
+                </p>
+            </div>
+
+            <!-- Silo Data Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="datahub-silos-grid">
+                <!-- Dynamically rendered or static preview of 8 silos -->
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 7: SCORING METHODOLOGY -->
+        <!-- ============================================================== -->
+        <div id="view-methodology" class="tab-view hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <h2 class="text-2xl font-black text-orange-600">Student Success Score (SSS) Methodology</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Mathematical formulation, indicator weightings, and decision intelligence logic.</p>
+                </div>
+
+                <!-- Formula Card -->
+                <div class="p-5 bg-orange-50/50 border border-orange-200 rounded-xl space-y-3">
+                    <h3 class="text-sm font-bold text-orange-700 uppercase tracking-wider">Composite Scoring Equation</h3>
+                    <div class="p-3 bg-white rounded-lg border border-orange-200 font-mono text-xs sm:text-sm text-slate-800 font-bold overflow-x-auto">
+                        SSS = 0.35 × Academic_Index + 0.25 × Engagement_LMS_Index + 0.30 × Placement_Index + 0.10 × Feedback_Index
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        The Student Success Score maps each student to an absolute 0–100 continuum. Indicators penalize active backlogs, incorporate continuous LMS logins, and model technical coding aptitude.
+                    </p>
+                </div>
+
+                <!-- Weighting Breakdown Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-enterprise">
+                        <thead>
+                            <tr>
+                                <th>Pillar</th>
+                                <th>Weight</th>
+                                <th>Underlying Indicators</th>
+                                <th>Target Objective</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-slate-900">Academic Index (AI)</td>
+                                <td class="font-bold text-orange-600">35%</td>
+                                <td>CGPA (0-10 normalized), Internal Assessment Marks, Backlog Penalties</td>
+                                <td>Identifies degree progression health and semester clearing likelihood.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-slate-900">Engagement & LMS (ELI)</td>
+                                <td class="font-bold text-orange-600">25%</td>
+                                <td>Biometric Attendance %, LMS Weekly Logins, Assignment Completion %, Certifications</td>
+                                <td>Captures daily student presence and digital coursework engagement.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-slate-900">Placement Readiness (PRI)</td>
+                                <td class="font-bold text-orange-600">30%</td>
+                                <td>Competitive Coding Score, Quantitative Aptitude, Mock Interview, Soft Skills</td>
+                                <td>Predicts campus recruitment employability and corporate readiness.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-slate-900">Feedback & Well-being (FWI)</td>
+                                <td class="font-bold text-orange-600">10%</td>
+                                <td>Mentor Appraisal Rating, Student Satisfaction Index, Course Sentiment</td>
+                                <td>Accounts for emotional sentiment, pedagogical satisfaction, and mentorship.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 8: DEMO PITCH DECK -->
+        <!-- ============================================================== -->
+        <div id="view-presentation" class="tab-view hidden space-y-4">
+            <div class="flex items-center justify-between bg-white p-4 rounded-xl border border-slate-200">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-black uppercase tracking-wider bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Executive Pitch</span>
+                    <span class="text-xs font-bold text-slate-700" id="slide-number-indicator">Slide 1 of 7</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="btn-prev-slide" class="px-3 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded-lg">Previous</button>
+                    <button id="btn-next-slide" class="px-3 py-1 text-xs font-bold bg-orange-600 hover:bg-orange-500 text-white rounded-lg">Next</button>
+                </div>
+            </div>
+
+            <!-- Slides Container -->
+            <div id="presentation-deck-container" class="relative">
+                <!-- Slide 1 -->
+                <div class="slide-card p-8 flex flex-col justify-between" data-slide="1">
+                    <div class="space-y-4">
+                        <div class="inline-block bg-orange-100 text-orange-700 font-bold text-xs uppercase px-3 py-1 rounded-full">Slide 01 • Institutional Vision</div>
+                        <h2 class="text-3xl font-black text-orange-600">EduPulse AI: Beyond Dashboards to Decision Intelligence</h2>
+                        <p class="text-slate-600 text-sm max-w-2xl leading-relaxed">
+                            Colleges generate millions of data points across attendance, exams, fees, and LMS platforms. Most institutions remain reactive—detecting failures only after semester exams conclude. EduPulse AI delivers proactive, prescriptive early-warning intelligence.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-lg"><strong>Problem:</strong> Siloed campus systems hide student failure patterns.</div>
+                        <div class="p-3 bg-orange-50 rounded-lg text-orange-800"><strong>Solution:</strong> 8-Silo unified student lake with predictive SSS scoring.</div>
+                        <div class="p-3 bg-slate-50 rounded-lg"><strong>Outcome:</strong> 28-day earlier interventions before student academic dropouts.</div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide-card p-8 flex flex-col justify-between hidden" data-slide="2">
+                    <div class="space-y-4">
+                        <div class="inline-block bg-orange-100 text-orange-700 font-bold text-xs uppercase px-3 py-1 rounded-full">Slide 02 • Core Architecture</div>
+                        <h2 class="text-3xl font-black text-orange-600">Enterprise Data Pipeline & Security</h2>
+                        <p class="text-slate-600 text-sm max-w-2xl leading-relaxed">
+                            Built with 15 years of technical architecture best practices: FastAPI high-throughput backend with API Key security, SQLite ACID relational storage, and lightweight reactive front-end with zero third-party framework bloat.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-lg"><strong>FastAPI Backend:</strong> Sub-15ms response times with OpenAPI documentation.</div>
+                        <div class="p-3 bg-slate-50 rounded-lg"><strong>API Key Security:</strong> Header-validated enterprise token guards.</div>
+                        <div class="p-3 bg-slate-50 rounded-lg"><strong>Real Auth:</strong> Disposable fake email blocking algorithm.</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide-card p-8 flex flex-col justify-between hidden" data-slide="3">
+                    <div class="space-y-4">
+                        <div class="inline-block bg-orange-100 text-orange-700 font-bold text-xs uppercase px-3 py-1 rounded-full">Slide 03 • Behavioral Segmentation</div>
+                        <h2 class="text-3xl font-black text-orange-600">4 Meaningful Student Cohort Personas</h2>
+                        <p class="text-slate-600 text-sm max-w-2xl leading-relaxed">
+                            Rather than treating all at-risk students the same, EduPulse AI groups learners into 4 distinct quadrants requiring entirely different institutional actions.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-slate-100 text-xs">
+                        <div class="p-3 bg-purple-50 rounded-lg text-purple-900"><strong>High Acad, Low Placement:</strong> High CGPA but weak coding. Prescribed DSA Bootcamp.</div>
+                        <div class="p-3 bg-emerald-50 rounded-lg text-emerald-900"><strong>High Achievers:</strong> Honors tracking, patent programs, and tier-1 company referrals.</div>
+                        <div class="p-3 bg-blue-50 rounded-lg text-blue-900"><strong>High Placement, Low Acad:</strong> Coding stars skipping theory classes. Attendance remediation.</div>
+                        <div class="p-3 bg-red-50 rounded-lg text-red-900"><strong>Disengaged At-Risk:</strong> Multiple backlogs + low logins. Comprehensive dean-level intervention.</div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="slide-card p-8 flex flex-col justify-between hidden" data-slide="4">
+                    <div class="space-y-4">
+                        <div class="inline-block bg-orange-100 text-orange-700 font-bold text-xs uppercase px-3 py-1 rounded-full">Slide 04 • Fees & Financial Integrity</div>
+                        <h2 class="text-3xl font-black text-orange-600">Institutional Revenue & Arrears Governance</h2>
+                        <p class="text-slate-600 text-sm max-w-2xl leading-relaxed">
+                            Connecting financial standing directly to student risk profiling. Students with pending exam or college fees often experience psychological stress correlated with attendance dips.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100 text-xs">
+                        <div class="p-3 bg-blue-50 rounded-lg"><strong>College Fees:</strong> ₹85,000 / student base fee.</div>
+                        <div class="p-3 bg-purple-50 rounded-lg"><strong>Exam Fees:</strong> ₹2,500 / semester hall ticket clearance.</div>
+                        <div class="p-3 bg-orange-50 rounded-lg"><strong>Hostel Fees:</strong> ₹45,000 / semester boarding fee.</div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="slide-card p-8 flex flex-col justify-between hidden" data-slide="5">
+                    <div class="space-y-4">
+                        <div class="inline-block bg-orange-100 text-orange-700 font-bold text-xs uppercase px-3 py-1 rounded-full">Slide 05 • Faculty Pedagogical Quality</div>
+                        <h2 class="text-3xl font-black text-orange-600">Curriculum Feedback & 7 Core Faculty</h2>
+                        <p class="text-slate-600 text-sm max-w-2xl leading-relaxed">
+                            Continuous lecture appraisal across Samdhasiva (DBMS), Ramudu (IE), Shateesh (DM), LN Rao (JAVA), Manohar (SE), Sampath (COA), and Chakiri (CRT) provides 360 feedback loops.
+                        </p>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-lg text-xs">
+                        Faculty clarity and syllabus pacing metrics directly influence student attendance trends in each course.
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="slide-card p-8 flex flex-col justify-between hidden" data-slide="6">
+                    <div class="space-y-4">
+                        <div class="inline-block bg-orange-100 text-orange-700 font-bold text-xs uppercase px-3 py-1 rounded-full">Slide 06 • Conversational AI Copilot</div>
+                        <h2 class="text-3xl font-black text-orange-600">24/7 Natural Language Decision Assistant</h2>
+                        <p class="text-slate-600 text-sm max-w-2xl leading-relaxed">
+                            Administrators and deans can query the platform in plain English: "Who is at risk in 3rd year CSE?", "Show DBMS ratings", or "Check outstanding hostel fees".
+                        </p>
+                    </div>
+                    <div class="p-3 bg-orange-50 rounded-lg text-xs text-orange-900">
+                        Zero SQL queries required by administrators—instant natural-language retrieval.
+                    </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="slide-card p-8 flex flex-col justify-between hidden" data-slide="7">
+                    <div class="space-y-4">
+                        <div class="inline-block bg-orange-100 text-orange-700 font-bold text-xs uppercase px-3 py-1 rounded-full">Slide 07 • Institutional Impact & ROI</div>
+                        <h2 class="text-3xl font-black text-orange-600">Tangible Outcomes for St. Mary's Group</h2>
+                        <p class="text-slate-600 text-sm max-w-2xl leading-relaxed">
+                            By unifying academic, engagement, financial, and pedagogical signals, EduPulse AI delivers measurable uplifts in placement rates and retention.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100 text-xs">
+                        <div class="p-3 bg-emerald-50 rounded-lg text-emerald-900"><strong>+18% Placement:</strong> Early coding bootcamp interventions.</div>
+                        <div class="p-3 bg-blue-50 rounded-lg text-blue-900"><strong>-35% Backlogs:</strong> Remedial warnings at Week 4.</div>
+                        <div class="p-3 bg-purple-50 rounded-lg text-purple-900"><strong>100% Transparency:</strong> Trustworthy SSS score explainability.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============================================================== -->
+    <!-- FLOATING AI COPILOT CHAT BOX WIDGET -->
+    <!-- ============================================================== -->
+    <div id="copilot-widget">
+        <!-- Minimized Floating Action Button -->
+        <button id="copilot-btn-open" onclick="toggleCopilotWidget(true)" class="copilot-launcher" title="Open EduPulse AI Copilot">
+            <i class="fas fa-robot text-2xl"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-2 border-white animate-pulse"></span>
+        </button>
+
+        <!-- Expanded Chat Panel -->
+        <div id="copilot-panel" class="copilot-panel minimized">
+            <!-- Header -->
+            <div class="copilot-header">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold text-sm">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white flex items-center gap-1.5">
+                            EduPulse AI Copilot
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        </div>
+                        <div class="text-[10px] text-slate-300">15-Year Senior Advisory Assistant</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <button onclick="toggleCopilotExpand()" id="btn-copilot-expand" title="Expand / Resize window" class="text-slate-400 hover:text-white p-1 text-xs">
+                        <i class="fas fa-expand-alt" id="icon-copilot-expand"></i>
+                    </button>
+                    <button onclick="openCopilotWorkspace()" title="Open Full Edu AI Workspace" class="text-slate-400 hover:text-white p-1 text-xs">
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                    <button onclick="clearCopilotChat()" title="Clear conversation" class="text-slate-400 hover:text-white p-1 text-xs">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button onclick="toggleCopilotWidget(false)" title="Minimize" class="text-slate-400 hover:text-white p-1 text-sm">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Conversation Body -->
+            <div id="copilot-chat-body" class="copilot-chat-body">
+                <!-- Welcome Bot Message -->
+                <div class="chat-bubble chat-bubble-bot">
+                    <p class="font-bold text-orange-600 text-xs mb-1">Hello! I am EduPulse AI Assistant.</p>
+                    <p class="text-xs text-slate-700">
+                        Ask me anything about student risk profiles, fee collections, faculty feedback, or LMS logins.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Suggestion Chips -->
+            <div class="p-2 bg-slate-100 border-t border-slate-200 overflow-x-auto flex gap-1.5 scrollbar-none">
+                <button onclick="sendCopilotPreset('Who are the critical at-risk students?')" class="chat-chip">Critical Risk</button>
+                <button onclick="sendCopilotPreset('Show DBMS feedback for Prof. Samdhasiva')" class="chat-chip">Prof. Samdhasiva</button>
+                <button onclick="sendCopilotPreset('What is the fee collection status?')" class="chat-chip">Fees Summary</button>
+                <button onclick="sendCopilotPreset('Which students have low LMS logins?')" class="chat-chip">Dormant LMS</button>
+            </div>
+
+            <!-- Chat Input Footer -->
+            <form onsubmit="handleCopilotSubmit(event)" class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
+                <input type="text" id="copilot-input-text" placeholder="Ask about students, faculty, fees..." required
+                    class="flex-1 px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <button type="submit" class="px-3 py-1.5 bg-orange-600 hover:bg-orange-500 text-white rounded-lg text-xs font-bold transition-colors">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL: AUTHENTICATION (SIGN IN & REGISTER) -->
+    <!-- ============================================================== -->
+    <div id="modal-auth" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-200">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white p-5 border-b border-orange-500/30 flex items-center justify-between">
+                <div>
+                    <h3 class="font-black text-sm text-white">EduPulse AI Access Portal</h3>
+                    <p class="text-[11px] text-slate-400">Database-backed authentication • No fake emails accepted</p>
+                </div>
+                <button onclick="closeAuthModal()" class="text-slate-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Tab Switcher (Sign In vs Register) -->
+            <div class="flex border-b border-slate-200 text-xs font-bold">
+                <button id="auth-tab-btn-login" onclick="switchAuthTab('login')" class="flex-1 py-3 text-center border-b-2 border-orange-600 text-orange-600">
+                    Sign In
+                </button>
+                <button id="auth-tab-btn-register" onclick="switchAuthTab('register')" class="flex-1 py-3 text-center text-slate-500 hover:text-slate-800">
+                    Register New User
+                </button>
+            </div>
+
+            <div class="p-6">
+                <!-- Alert Box -->
+                <div id="auth-alert-box" class="hidden mb-4 p-3 rounded-xl text-xs font-semibold"></div>
+
+                <!-- TAB 1: SIGN IN FORM -->
+                <form id="form-auth-login" onsubmit="handleAuthLoginSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Email Address</label>
+                        <input type="email" id="login-email" required placeholder="admin@stmarysgroup.com"
+                            class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+                        <input type="password" id="login-password" required placeholder="••••••••"
+                            class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                    </div>
+
+                    <!-- Quick Autofill Demo Credentials -->
+                    <div class="pt-1">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Quick Demo Autofill:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <button type="button" onclick="autofillDemo('admin')" class="px-2 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 rounded text-slate-700 font-semibold">
+                                Admin Account
+                            </button>
+                            <button type="button" onclick="autofillDemo('faculty')" class="px-2 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 rounded text-slate-700 font-semibold">
+                                Faculty Account
+                            </button>
+                            <button type="button" onclick="autofillDemo('student')" class="px-2 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 rounded text-slate-700 font-semibold">
+                                Student Account
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-2.5 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs rounded-xl shadow-sm shadow-orange-600/30 transition-all mt-2">
+                        Sign In to EduPulse AI
+                    </button>
+                </form>
+
+                <!-- TAB 2: REGISTER FORM -->
+                <form id="form-auth-register" onsubmit="handleAuthRegisterSubmit(event)" class="space-y-3.5 hidden">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+                        <input type="text" id="reg-name" required placeholder="e.g. Vikram Sharma"
+                            class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Real Institutional / College Email</label>
+                        <input type="email" id="reg-email" required placeholder="name@stmarysgroup.com or name@gmail.com"
+                            class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <span class="text-[10px] text-slate-400 mt-0.5 block">Disposable/fake emails (@mailinator, @tempmail, etc.) will be rejected.</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Account Role</label>
+                            <select id="reg-role" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                                <option value="student">Student</option>
+                                <option value="faculty">Faculty Member</option>
+                                <option value="admin">Administrator</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Student Roll / ID</label>
+                            <input type="text" id="reg-roll" placeholder="23JH1A0501"
+                                class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Create Password</label>
+                        <input type="password" id="reg-password" required minlength="6" placeholder="Min. 6 characters"
+                            class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                    </div>
+
+                    <button type="submit" class="w-full py-2.5 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs rounded-xl shadow-sm shadow-orange-600/30 transition-all mt-2">
+                        Create Real Account (Save to DB)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL: RECORD FEE PAYMENT -->
+    <!-- ============================================================== -->
+    <div id="modal-fee-payment" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-200">
+            <div class="bg-slate-900 text-white p-4 flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-sm">Record Student Fee Payment</h3>
+                    <p class="text-[11px] text-slate-400">Updates college, exam, or hostel ledger</p>
+                </div>
+                <button onclick="closePaymentModal()" class="text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
+            </div>
+            <form onsubmit="handleFeePaymentSubmit(event)" class="p-5 space-y-3.5">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Select Student</label>
+                    <select id="pay-student-id" required class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <!-- Populated dynamically -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Fee Category</label>
+                    <select id="pay-category" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <option value="College">College Fees (₹85,000)</option>
+                        <option value="Exam">Exam Fees (₹2,500)</option>
+                        <option value="Hostel">Hostel Fees (₹45,000)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Amount to Pay (₹)</label>
+                    <input type="number" id="pay-amount" required value="25000" min="500" step="500"
+                        class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Transaction Mode & Reference</label>
+                    <input type="text" id="pay-ref" placeholder="UPI / Bank NEFT Ref ID (e.g. TXN-94821)"
+                        class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div class="pt-2 flex items-center justify-end gap-2">
+                    <button type="button" onclick="closePaymentModal()" class="px-3.5 py-1.5 text-xs font-semibold text-slate-600 bg-slate-100 rounded-lg">Cancel</button>
+                    <button type="submit" class="px-4 py-1.5 text-xs font-bold text-white bg-orange-600 hover:bg-orange-500 rounded-lg shadow-sm">Submit Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL: SUBMIT LECTURE FEEDBACK -->
+    <!-- ============================================================== -->
+    <div id="modal-feedback" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-200">
+            <div class="bg-slate-900 text-white p-4 flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-sm">Submit Faculty & Subject Feedback</h3>
+                    <p class="text-[11px] text-slate-400">Voice your anonymous academic appraisal</p>
+                </div>
+                <button onclick="closeFeedbackModal()" class="text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
+            </div>
+            <form onsubmit="handleFeedbackSubmit(event)" class="p-5 space-y-3.5">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Faculty & Subject</label>
+                    <select id="fb-faculty-id" required class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <option value="FAC-001">DBMS — Prof. Samdhasiva</option>
+                        <option value="FAC-002">IE — Prof. Ramudu</option>
+                        <option value="FAC-003">DM — Prof. Shateesh</option>
+                        <option value="FAC-004">JAVA — Prof. LN Rao</option>
+                        <option value="FAC-005">SE — Prof. Manohar</option>
+                        <option value="FAC-006">COA — Prof. Sampath</option>
+                        <option value="FAC-007">CRT — Prof. Chakiri</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Overall Rating (1-5)</label>
+                        <select id="fb-rating" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg">
+                            <option value="5">5 - Excellent (★★★★★)</option>
+                            <option value="4">4 - Very Good (★★★★☆)</option>
+                            <option value="3">3 - Satisfactory (★★★☆☆)</option>
+                            <option value="2">2 - Needs Improvement (★★☆☆☆)</option>
+                            <option value="1">1 - Unsatisfactory (★☆☆☆☆)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Concept Clarity (1-5)</label>
+                        <select id="fb-clarity" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg">
+                            <option value="5">5 - Crystal Clear</option>
+                            <option value="4">4 - Clear</option>
+                            <option value="3">3 - Moderate</option>
+                            <option value="2">2 - Unclear</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Student Review / Comments</label>
+                    <textarea id="fb-comments" rows="3" required placeholder="Highlight teaching strengths, practical examples, syllabus pace..."
+                        class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500"></textarea>
+                </div>
+                <div class="pt-2 flex items-center justify-end gap-2">
+                    <button type="button" onclick="closeFeedbackModal()" class="px-3.5 py-1.5 text-xs font-semibold text-slate-600 bg-slate-100 rounded-lg">Cancel</button>
+                    <button type="submit" class="px-4 py-1.5 text-xs font-bold text-white bg-orange-600 hover:bg-orange-500 rounded-lg shadow-sm">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL: STUDENT 360 DIAGNOSTIC VIEW -->
+    <!-- ============================================================== -->
+    <div id="modal-student-360" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden border border-slate-200">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white p-5 border-b border-orange-500/30 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center font-bold text-base text-white" id="modal-stu-avatar">
+                        ST
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-black text-base text-white" id="modal-stu-name">Student Full Name</h3>
+                            <span class="text-xs px-2 py-0.5 rounded-full font-bold" id="modal-stu-risk-badge">Critical Risk</span>
+                        </div>
+                        <p class="text-xs text-slate-400" id="modal-stu-meta">ID: STU-001 • Roll: 23JH1A0501 • CSE</p>
+                    </div>
+                </div>
+                <button onclick="closeStudentModal()" class="text-slate-400 hover:text-white text-lg">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Modal Scrollable Content -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-1">
+                <!-- Top 4 Pillar Indices -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase">Academic Index (35%)</div>
+                        <div class="text-xl font-black text-blue-600 mt-1" id="m-ai-val">--%</div>
+                    </div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase">Engagement & LMS (25%)</div>
+                        <div class="text-xl font-black text-purple-600 mt-1" id="m-eli-val">--%</div>
+                    </div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase">Placement Ready (30%)</div>
+                        <div class="text-xl font-black text-emerald-600 mt-1" id="m-pri-val">--%</div>
+                    </div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase">Success Score (SSS)</div>
+                        <div class="text-xl font-black text-orange-600 mt-1" id="m-sss-val">--/100</div>
+                    </div>
+                </div>
+
+                <!-- Attributes Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                    <div class="p-3 bg-white border border-slate-200 rounded-xl">
+                        <span class="text-slate-400 font-bold uppercase text-[10px]">CGPA</span>
+                        <div class="text-sm font-bold text-slate-800" id="m-cgpa">--</div>
+                    </div>
+                    <div class="p-3 bg-white border border-slate-200 rounded-xl">
+                        <span class="text-slate-400 font-bold uppercase text-[10px]">Attendance</span>
+                        <div class="text-sm font-bold text-slate-800" id="m-att">--</div>
+                    </div>
+                    <div class="p-3 bg-white border border-slate-200 rounded-xl">
+                        <span class="text-slate-400 font-bold uppercase text-[10px]">Backlogs</span>
+                        <div class="text-sm font-bold text-slate-800" id="m-backlogs">--</div>
+                    </div>
+                    <div class="p-3 bg-white border border-slate-200 rounded-xl">
+                        <span class="text-slate-400 font-bold uppercase text-[10px]">LMS Logins</span>
+                        <div class="text-sm font-bold text-slate-800" id="m-logins">-- logins</div>
+                    </div>
+                </div>
+
+                <!-- Explainable Score Attribution -->
+                <div class="p-4 bg-orange-50/50 border border-orange-200 rounded-xl">
+                    <h4 class="text-xs font-bold text-orange-700 uppercase mb-2">Explainable Score Drivers & Early Warning Factors</h4>
+                    <ul class="text-xs text-slate-700 space-y-1" id="m-explain-list">
+                        <!-- Populated dynamically -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-50 px-6 py-3 border-t border-slate-200 flex items-center justify-between">
+                <button onclick="closeStudentModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-800 bg-white border border-slate-200 rounded-lg">Close</button>
+                <button onclick="openInterventionFromStudent()" class="px-4 py-2 text-xs font-bold text-white bg-orange-600 hover:bg-orange-500 rounded-lg shadow-sm flex items-center gap-1.5">
+                    <i class="fas fa-calendar-plus"></i> Assign Targeted Intervention
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL: EXCEL & CSV DATA INGESTION ENGINE -->
+    <!-- ============================================================== -->
+    <div id="modal-upload-excel" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full flex flex-col overflow-hidden border border-slate-200">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white p-5 border-b border-emerald-500/30 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-lg font-bold shadow-sm">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-base text-white">Import Student Dataset</h3>
+                        <p class="text-xs text-slate-300">FastAPI Ingestion Engine • Enriches CGPA, Attendance, LMS Logins & Success Scores</p>
+                    </div>
+                </div>
+                <button onclick="closeUploadModal()" class="text-slate-400 hover:text-white text-lg">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 space-y-4 flex-1 overflow-y-auto">
+                <!-- Alert Box -->
+                <div id="upload-alert-box" class="hidden mb-4 p-3 rounded-xl text-xs font-semibold"></div>
+
+                <!-- Tabs -->
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <button id="tab-upload-file" onclick="switchUploadTab('file')" class="px-4 py-2 text-xs font-bold rounded-lg bg-orange-600 text-white shadow-sm transition-all">
+                        <i class="fas fa-file-upload mr-1.5"></i> Upload Excel / CSV File
+                    </button>
+                    <button id="tab-upload-paste" onclick="switchUploadTab('paste')" class="px-4 py-2 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                        <i class="fas fa-paste mr-1.5"></i> Paste Spreadsheet Rows
+                    </button>
+                </div>
+
+                <!-- PANE 1: FILE PICKER / DRAG & DROP -->
+                <div id="pane-upload-file" class="space-y-4">
+                    <div onclick="document.getElementById('excel-file-input').click()" 
+                         ondragover="event.preventDefault(); this.classList.add('border-emerald-500', 'bg-emerald-50/30')" 
+                         ondragleave="this.classList.remove('border-emerald-500', 'bg-emerald-50/30')"
+                         ondrop="event.preventDefault(); this.classList.remove('border-emerald-500', 'bg-emerald-50/30'); handleExcelFileSelect(event)"
+                         class="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-2xl p-8 text-center bg-slate-50 hover:bg-emerald-50/20 cursor-pointer transition-all">
+                        <input type="file" id="excel-file-input" accept=".xlsx,.xls,.csv" class="hidden" onchange="handleExcelFileSelect(event)">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3 shadow-sm">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-800">Choose an Excel (.xlsx / .xls) or CSV File</h4>
+                        <p class="text-xs text-slate-400 mt-1">Drag and drop file here, or click to browse files from your computer</p>
+                        <span class="inline-block mt-3 px-3 py-1 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold text-slate-600 shadow-sm">
+                            Supports Microsoft 365, St. Mary's Roster, or Custom Columns
+                        </span>
+                    </div>
+
+                    <!-- Selected File Preview Pill -->
+                    <div id="selected-file-info" class="hidden p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-2 text-emerald-900 font-semibold">
+                            <i class="fas fa-file-excel text-emerald-600 text-sm"></i>
+                            <span id="selected-file-name" class="font-bold">file.xlsx</span>
+                            <span class="text-slate-400 font-normal">(<span id="selected-file-size">0 KB</span>)</span>
+                        </div>
+                        <button onclick="resetUploadModal()" class="text-red-500 hover:text-red-700 font-bold">Remove</button>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2">
+                        <button type="button" onclick="loadOfficialStMarysRoster()" class="px-3 py-1.5 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg">
+                            <i class="fas fa-magic text-orange-500 mr-1"></i> Use Official St. Mary's 198 Roster
+                        </button>
+                        <button id="btn-submit-excel" onclick="submitExcelFile()" disabled class="px-5 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 disabled:hover:bg-emerald-600 rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+                            <i class="fas fa-file-import"></i> Ingest to Database
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PANE 2: DIRECT PASTE TEXTAREA -->
+                <div id="pane-upload-paste" class="hidden space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="text-xs font-bold text-slate-700">Paste Tabular CSV Rows or Excel Columns</label>
+                            <button type="button" onclick="loadOfficialStMarysRoster()" class="text-xs font-bold text-orange-600 hover:underline">
+                                Pre-fill St. Mary's Roster
+                            </button>
+                        </div>
+                        <textarea id="paste-raw-textarea" rows="7" placeholder="Display name,Username,Password,Licenses
+ANKITHA AJEMERA,25D01A0501@stmarysgroup.com,C!054379597796ob,&quot;Microsoft 365 A3 for students use benefit&quot;
+AJAYKUMAR BANKA,25D01A0502@stmarysgroup.com,B%440195876301od,&quot;Microsoft 365 A3 for students use benefit&quot;"
+                            class="w-full font-mono text-xs p-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                        <p class="text-[11px] text-slate-400 mt-1">Accepts headers like Display name / Username / Roll / CGPA / Attendance.</p>
+                    </div>
+
+                    <div class="flex items-center justify-end pt-2">
+                        <button id="btn-submit-paste" onclick="submitPasteData()" class="px-5 py-2 text-xs font-bold text-white bg-orange-600 hover:bg-orange-500 rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+                            <i class="fas fa-database"></i> Ingest Pasted Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-50 px-6 py-3 border-t border-slate-200 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">Values for CGPA and attendance will be safely populated if omitted.</span>
+                <button onclick="closeUploadModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-800 bg-white border border-slate-200 rounded-lg">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

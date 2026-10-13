@@ -1,0 +1,38 @@
+[
+  {
+    "id": "INT-001",
+    "student_id": "STU-2024-1002",
+    "student_name": "Rohan Patel",
+    "department": "Computer Science & Engineering",
+    "risk_type": "Placement Risk",
+    "action_type": "DSA Coding Bootcamp & 1-on-1 Mock Interview Series",
+    "assigned_mentor": "Prof. S. Ranganathan",
+    "target_date": "2026-11-15",
+    "status": "In Progress",
+    "notes": "Student maintains 8.4 CGPA but struggled in competitive coding rounds."
+  },
+  {
+    "id": "INT-002",
+    "student_id": "STU-2024-1014",
+    "student_name": "Arjun Chakraborty",
+    "department": "Artificial Intelligence & Data Science",
+    "risk_type": "Academic & Attendance Risk",
+    "action_type": "Remedial Tutoring & Attendance Monitoring",
+    "assigned_mentor": "Dr. K. Sharma",
+    "target_date": "2026-11-05",
+    "status": "Pending",
+    "notes": "Attendance dropped below 68% with 2 active core subject backlogs."
+  },
+  {
+    "id": "INT-003",
+    "student_id": "STU-2024-1022",
+    "student_name": "Manish Saxena",
+    "department": "Information Technology",
+    "risk_type": "Critical Comprehensive Risk",
+    "action_type": "Dean & Parent Counseling Session",
+    "assigned_mentor": "Dean of Student Welfare",
+    "target_date": "2026-10-25",
+    "status": "Completed",
+    "notes": "Customized recovery roadmap signed. Assigned senior peer study partner."
+  }
+]

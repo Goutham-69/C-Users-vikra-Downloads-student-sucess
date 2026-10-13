@@ -1,0 +1,438 @@
+/* EduPulse AI - Enterprise Student Success & Intelligence Platform
+   Architected to 15-Year Senior Technical Standards
+   Theme: Crisp Pure White Background, Vibrant Orange (#ea580c / #f97316) for Key Headings
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root {
+    --bg-main: #ffffff;
+    --bg-surface: #f8fafc;
+    --bg-card: #ffffff;
+    
+    /* Primary & Brand Accent */
+    --kpmg-navy: #001a49;
+    --kpmg-blue: #00338d;
+    --kpmg-light: #0091da;
+    
+    /* Specified Theme Colors: Vibrant Orange for Key Headings */
+    --brand-orange: #ea580c;
+    --brand-orange-light: #f97316;
+    --brand-orange-dark: #c2410c;
+    --brand-orange-subtle: #fff7ed;
+    --brand-orange-border: #fed7aa;
+    
+    /* Neutral Grays */
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border-light: #e2e8f0;
+    --border-subtle: #f1f5f9;
+    
+    /* Risk Spectrum */
+    --risk-critical: #ef4444;
+    --risk-high: #f97316;
+    --risk-medium: #eab308;
+    --risk-low: #10b981;
+}
+
+/* Base Setup */
+html, body {
+    background-color: var(--bg-main) !important;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.011em;
+    min-height: 100vh;
+}
+
+/* Important Headings in Orange */
+h1, h2, h3, .heading-orange, .text-brand-orange {
+    color: var(--brand-orange) !important;
+}
+
+.heading-gradient-orange {
+    background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Enterprise Card & Surface Styles */
+.card-white {
+    background-color: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-white:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.06), 0 4px 8px -4px rgba(15, 23, 42, 0.04);
+}
+
+.card-orange-accent {
+    border-top: 4px solid var(--brand-orange);
+}
+
+.card-navy-accent {
+    border-top: 4px solid var(--kpmg-navy);
+}
+
+/* Risk Badges */
+.badge-critical {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    font-weight: 700;
+}
+.badge-high {
+    background-color: #fff7ed;
+    color: #c2410c;
+    border: 1px solid #ffedd5;
+    font-weight: 700;
+}
+.badge-medium {
+    background-color: #fefce8;
+    color: #a16207;
+    border: 1px solid #fef08a;
+    font-weight: 700;
+}
+.badge-low {
+    background-color: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+    font-weight: 700;
+}
+
+/* Score Pill */
+.score-pill {
+    font-weight: 800;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Pulsing Risk Dot */
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.pulse-dot-critical {
+    background-color: #ef4444;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    animation: pulse 1.8s infinite;
+}
+.pulse-dot-high {
+    background-color: #f97316;
+}
+.pulse-dot-medium {
+    background-color: #eab308;
+}
+.pulse-dot-low {
+    background-color: #10b981;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 7px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Navigation Tab Active Indicator */
+.nav-tab-btn {
+    transition: all 0.15s ease-in-out;
+}
+.nav-tab-btn.active {
+    background-color: #ea580c !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+}
+
+/* AI Copilot Chat Floating Widget */
+#copilot-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+}
+
+.copilot-launcher {
+    width: 60px;
+    height: 60px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #ea580c, #f97316);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px -3px rgba(234, 88, 12, 0.4), 0 4px 6px -4px rgba(234, 88, 12, 0.2);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.copilot-launcher:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 16px 32px -4px rgba(234, 88, 12, 0.5);
+}
+
+.copilot-panel {
+    width: 420px;
+    max-width: calc(100vw - 32px);
+    height: 600px;
+    max-height: calc(100vh - 100px);
+    background-color: #ffffff;
+    border-radius: 1.25rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.2), 0 8px 16px -4px rgba(15, 23, 42, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform-origin: bottom right;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.copilot-panel.minimized {
+    transform: scale(0.85);
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.copilot-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-bottom: 2px solid var(--brand-orange);
+    color: white;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.copilot-chat-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.chat-bubble {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.chat-bubble-user {
+    background: linear-gradient(135deg, #ea580c, #f97316);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 0.25rem;
+    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.2);
+}
+
+.chat-bubble-bot {
+    background-color: #ffffff;
+    color: #1e293b;
+    margin-right: auto;
+    border: 1px solid #e2e8f0;
+    border-bottom-left-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.chat-chip {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+.chat-chip:hover {
+    background: #fff7ed;
+    border-color: #ea580c;
+    color: #ea580c;
+}
+
+/* Copilot Panel Expanded State */
+.copilot-panel.expanded {
+    width: 760px;
+    height: 720px;
+}
+
+/* Rich Formatted Markdown Inside Copilot Bubbles */
+.chat-bubble-bot {
+    font-size: 0.825rem;
+    line-height: 1.55;
+}
+
+.chat-bubble-bot h3 {
+    color: #ea580c !important;
+    font-size: 0.925rem;
+    font-weight: 800;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.chat-bubble-bot h4 {
+    color: #c2410c !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 0.35rem;
+    margin-bottom: 0.15rem;
+}
+
+.chat-bubble-bot strong {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.chat-bubble-bot blockquote {
+    border-left: 3px solid #ea580c;
+    background-color: #fff7ed;
+    padding: 0.4rem 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 0 0.5rem 0.5rem 0;
+    color: #475569;
+    font-style: italic;
+    font-size: 0.785rem;
+}
+
+.chat-bubble-bot .code-badge {
+    background-color: #fff7ed;
+    color: #c2410c;
+    border: 1px solid #ffedd5;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.35rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.chat-bubble-bot .bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    margin: 0.25rem 0;
+}
+
+.chat-bubble-bot .bullet-marker {
+    color: #ea580c;
+    font-size: 0.7rem;
+    margin-top: 0.15rem;
+}
+
+.chat-actions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed #e2e8f0;
+}
+
+.chat-action-btn {
+    background: #ffffff;
+    border: 1px solid #fed7aa;
+    color: #ea580c;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    box-shadow: 0 1px 2px rgba(234, 88, 12, 0.08);
+    transition: all 0.15s ease;
+}
+
+.chat-action-btn:hover {
+    background: #ea580c;
+    color: #ffffff;
+    border-color: #ea580c;
+    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
+    transform: translateY(-1px);
+}
+.modal-overlay {
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Fees Structure Cards */
+.fee-card-college {
+    border-left: 5px solid #2563eb;
+}
+.fee-card-exam {
+    border-left: 5px solid #7c3aed;
+}
+.fee-card-hostel {
+    border-left: 5px solid #ea580c;
+}
+
+/* Faculty Review Star Rating */
+.star-rating {
+    color: #f59e0b;
+    font-size: 0.9rem;
+}
+
+/* Slide Deck Presentation Styling */
+.slide-card {
+    min-height: 520px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Table Enhancements */
+.table-enterprise th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.table-enterprise td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.8125rem;
+    vertical-align: middle;
+}
+
+.table-enterprise tr:hover td {
+    background-color: #fff7ed/30;
+}
