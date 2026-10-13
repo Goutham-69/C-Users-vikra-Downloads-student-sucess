@@ -22,7 +22,7 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // Serve primary single-page application template
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'src' , 'templates', 'index.html'));
+    res.sendFile(path.join(__dirname,'templates', 'index.html'));
 });
 
 // Proxy API requests to Python FastAPI Backend
